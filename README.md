@@ -8,7 +8,7 @@
 Clone o repositório
 
 ```
-git clone https://github.com/szwacz/electron-boilerplate.git
+https://github.com/LucasAndrad/trocador-calor-pi1-turma-A.git
 ```
 
 Em seguida instale as dependências
