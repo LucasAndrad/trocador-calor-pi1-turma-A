@@ -1,32 +1,22 @@
 [
   {
-    "id": 1,
-    "data": "2018-09-23T19:54:16.016405Z",
-    "temperatura": 10.5,
-    "nome": "sensor1"
+    "date": "2018-09-23T19:54:16.016405Z",
+    "temperature": 10.5,
+    "sensor_id": 1
   },
   {
-    "id": 2,
-    "data": "2018-09-23T19:54:26.308938Z",
-    "temperatura": 40.2,
-    "nome": "sensor2"
+    "date": "2018-09-23T19:54:26.308938Z",
+    "temperature": 40.2,
+    "sensor_id": 2
   },
   {
-    "id": 3,
-    "data": "2018-09-23T19:54:35.523941Z",
-    "temperatura": 55.4,
-    "nome": "sensor3"
+    "date": "2018-09-23T19:54:35.523941Z",
+    "temperature": 55.4,
+    "sensor_id": 3
   },
   {
-    "id": 4,
-    "data": "2018-09-23T19:54:42.595775Z",
-    "temperatura": 70.0,
-    "nome": "sensor4"
+    "date": "2018-09-23T19:54:42.595775Z",
+    "temperature": 70.0,
+    "sensor_id": 4
   },
-  {
-    "id": 5,
-    "data": "2018-09-23T19:54:55.816040Z",
-    "temperatura": 111.9,
-    "nome": "sensor5"
-  }
 ]
