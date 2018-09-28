@@ -1,4 +1,4 @@
-var tabButtons=document.querySelectorAll(".tabs .button button");
+// var tabButtons=document.querySelectorAll(".tabs .button button");
 var tabPanels=document.querySelectorAll(".tabs  .tab");
 var tabPanels2=document.querySelectorAll(".tabs  .tab2");
 
