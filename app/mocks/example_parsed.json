@@ -1,0 +1,22 @@
+[
+  {
+    "date": "2018-09-23T19:54:16.016405Z",
+    "temperature": 10.5,
+    "sensor_id": 1
+  },
+  {
+    "date": "2018-09-23T19:54:26.308938Z",
+    "temperature": 40.2,
+    "sensor_id": 2
+  },
+  {
+    "date": "2018-09-23T19:54:35.523941Z",
+    "temperature": 55.4,
+    "sensor_id": 3
+  },
+  {
+    "date": "2018-09-23T19:54:42.595775Z",
+    "temperature": 70.0,
+    "sensor_id": 4
+  }
+]
