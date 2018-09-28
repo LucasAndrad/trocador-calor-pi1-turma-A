@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Trocador de Calor PI 1 turma A</h1>
-</body>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Trocador de Calor - Monitoramento</title>
+    <link rel="stylesheet" href="./app/css/index.css">
+  </head>
+  <body>
+    <div class="tabs">
+        <div class="button">
+            <button onclick="showPanel(0)">Principal</button>
+            <button onclick="showPanel(1)">Simulação</button>
+        </div>
+        <div class="tab">
+          <h2>Trocador de Calor</h2>
+          <div class="card">
+              <div class="container">
+                <h4><b>Card 1</b></h4> 
+                <p>Conteúdo do card</p> 
+              </div>
+            </div> 
+            <div class="card2">
+                <div class="container">
+                  <h4><b>Card 2</b></h4> 
+                  <p>Conteúdo do Card</p> 
+                </div>
+            </div>                           
+        </div>
+        <div class="tab2">
+          <h2> Simulação </h2>
+          <div class="card3">
+              <div class="container">
+                <h4><b>Card 1</b></h4> 
+                <p>Conteúdo do Card</p> 
+              </div>
+            </div>                
+        </div>
+    </div>
+<script>
+      require('./app/components/tabs.js')
+    </script>
+  </body>
+  <script src="./app/components/tabs.js"></script>
 </html>
