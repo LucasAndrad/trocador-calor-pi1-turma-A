@@ -4,6 +4,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Data</title>
   </head>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+  <script>
+    $(function() {
+      $.getJSON('./app/mocks/example_parsed.json', function(data) {
+        var temperature = data[0].temperature;
+        document.getElementById("temperature1").innerHTML = temperature;
+        var temperature = data[1].temperature;
+        document.getElementById("temperature2").innerHTML = temperature;
+        var temperature = data[2].temperature;
+        document.getElementById("temperature3").innerHTML = temperature;
+        var temperature = data[3].temperature;
+        document.getElementById("temperature4").innerHTML = temperature;
+      });
+    });
+  </script>
   <style>
     body {
       margin: 0;
@@ -18,7 +34,6 @@
     }
     .left {
       float:left;
-      /* width:20%; */
       text-align:right;
     }
     .main {
@@ -26,7 +41,6 @@
     }
     .right {
       float:left;
-      /* width:20%; */
       text-align:left;
     }
     .sensor-dot{
@@ -61,11 +75,11 @@
     <div class="heat-exchanger-container" style="overflow:auto">
       <div class="left">
         <div class="first-element">
-          <span class="temperature-dot"><text>99</text></span>
+          <span class="temperature-dot"><text id="temperature1"></text></span>
           <span class="sensor-dot"><text>1</text></span>
         </div>
         <div class="second-element">
-          <span class="temperature-dot"><text>99</text></span>
+          <span class="temperature-dot"><text id="temperature2"></text></span>
           <span class="sensor-dot"><text>2</text></span>
         </div>
       </div>
@@ -76,11 +90,11 @@
 
       <div class="right">
         <div class="first-element">
-          <span class="temperature-dot"><text>99</text></span>
+          <span class="temperature-dot"><text id="temperature3"></text></span>
           <span class="sensor-dot"><text>3</text></span>
         </div>
         <div class="second-element">
-          <span class="temperature-dot"><text>99</text></span>
+          <span class="temperature-dot"><text id="temperature4"></text></span>
           <span class="sensor-dot"><text>4</text></span>
         </div>
       </div>
