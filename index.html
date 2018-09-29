@@ -19,27 +19,56 @@
           <h2>Trocador de Calor</h2>
           <div class="card">
               <div class="container">
-                <h4><b>Card 1</b></h4> 
-                <p>Conteúdo do card</p> 
+                <h4><b>Card 1</b></h4>
+                <p>Conteúdo do card</p>
               </div>
-            </div> 
+            </div>
             <div class="card2">
                 <div class="container">
-                  <h4><b>Card 2</b></h4> 
-                  <p>Conteúdo do Card</p> 
+                  <h4><b>Card 2</b></h4>
+                  <p>Conteúdo do Card</p>
                 </div>
-            </div>                           
+            </div>
+            <div class="card4">
+                <div class="container">
+                  <h4><b>Histórico de temperaturas</b></h4>
+                  <table id="temperatureTable">
+                     <tr>
+                       <th>Ordem da Medição</th>
+                       <th>Sensor 1 (S1) (°C)</th>
+                       <th>Sensor 2 (S2) (°C)</th>
+                       <th>Sensor 3 (S3) (°C)</th>
+                       <th>Sensor 4 (S4) (°C)</th>
+                     </tr>
+                     <tr>
+                       <td>1</td>
+                       <td id="temperature1"></td>
+                       <td id="temperature2"></td>
+                       <td id="temperature3"></td>
+                       <td id="temperature4"></td>
+                     </tr>
+                     <tr>
+                       <td><b>Média</b></td>
+                       <td><b id="media1"></b></td>
+                       <td><b id="media2"></b></td>
+                       <td><b id="media3"></b></td>
+                       <td><b id="media4"></b></td>
+                     </tr>
+                  </table>
+                </div>
+            </div>
         </div>
         <div class="tab2">
           <h2> Simulação </h2>
           <div class="card3">
               <div class="container">
-                <h4><b>Card 1</b></h4> 
-                <p>Conteúdo do Card</p> 
+                <h4><b>Card 1</b></h4>
+                <p>Conteúdo do Card</p>
               </div>
-            </div>                
+            </div>
         </div>
     </div>
   </body>
   <script src="./app/components/tabs.js"></script>
+  <script src="./app/components/temperatureTable.js"></script>
 </html>
