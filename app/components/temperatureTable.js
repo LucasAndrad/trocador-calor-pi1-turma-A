@@ -54,16 +54,23 @@ function calculateLinesOfTable(){
   return lines;
 }
 
-function calculateMedia(list){
+function addValueOnArrayOfTemperatures(temperatures, newValue){
+    temperatures.push(newValue);
+  return temperatures;
+}
+
+function calculateMedia(temperatures){
   var valorSoma = 0, arraySoma = [];
-  for(var i = 0; i < list.length; i++){
-    arraySoma[i] = parseFloat(list[i].value);
-    valorSoma += parseFloat(list[i]);
+  for(var i = 0; i < temperatures.length; i++){
+    arraySoma[i] = parseFloat(temperatures[i].value);
+    valorSoma += parseFloat(temperatures[i]);
   }
   var media = (valorSoma/calculateLinesOfTable()).toFixed(2);
 
   return media;
 }
+
+// temperaturesOfS1 = addValueOnArrayOfTemperatures(temperaturesOfS1, 10);
 
 document.getElementById("media1").innerHTML = calculateMedia(temperaturesOfS1);
 document.getElementById("media2").innerHTML = calculateMedia(temperaturesOfS2);
