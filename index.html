@@ -8,14 +8,22 @@
   <body>
     <div class="tabs-a" id="tabs">
       <div class="tab-a a1">
-        <div class="tab-a-title">Trocador de Calor</div>
+        <div class="tab-a-title" onclick="toggleTabs(1)">Trocador de Calor</div>
       </div>
 
       <div class="tab-a a2">
-          <div class="tab-a-title">Simulador</div>
+          <div class="tab-a-title" onclick="toggleTabs(2)">Simulador</div>
       </div>
     </div>
 
+      <div class="tab-a1-content" id="tab-a1">
+          <h1>Trocador de calor</h1>
+      </div>
+      
+      <div class="tab-a2-content" id="tab-a2">
+          <h1>Simulador</h1>
+      </div>
+      
     <div class="tabs">
       <div class="buttons">
         <div class="button1">
@@ -95,4 +103,5 @@
   </body>
   <script src="./app/components/tabs.js"></script>
   <script src="./app/components/temperatureTable.js"></script>
+  <script src="./app/components/tabs-a.js"></script>
 </html>

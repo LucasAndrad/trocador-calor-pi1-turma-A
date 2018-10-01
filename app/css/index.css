@@ -19,6 +19,19 @@ body{
     cursor: pointer;
 }
 
+.tab-a1-content, .tab-a2-content{
+    width: 100%;
+    height: 500px;
+}
+
+.tab-a1-content{
+    background-color: blue;
+    display: inherit;
+}
+.tab-a2-content{
+    background-color: red;
+    display: none;
+}
 
 
 .tabs{
