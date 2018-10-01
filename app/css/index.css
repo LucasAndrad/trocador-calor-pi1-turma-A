@@ -1,8 +1,24 @@
+body{
+     font-family: sans-serif;
+}
 .tabs-a {
     width: 100%;
-    background: gray;
+    background: #eeeeee;
     display: flex;
 }
+.tab-a{
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-bottom: 2px solid #eeeeee;
+    padding-bottom: 5px;
+}
+
+.tab-a:hover{
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+
 
 
 .tabs{
