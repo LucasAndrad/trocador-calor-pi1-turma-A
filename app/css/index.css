@@ -1,3 +1,4 @@
+
 body{
      font-family: sans-serif;
 }
@@ -7,7 +8,7 @@ body{
     display: flex;
 }
 .tab-a{
-    margin-left: 5%;
+    margin-left: 25%;
     margin-top: 1%;
     margin-bottom: 1%;
     border-bottom: 2px solid #eeeeee;
@@ -25,13 +26,108 @@ body{
 }
 
 .tab-a1-content{
-    background-color: blue;
+    background-color: deepskyblue;
     display: inherit;
 }
 .tab-a2-content{
     background-color: red;
     display: none;
 }
+
+.tab-a-title2{
+    background-color: aqua;
+}
+
+.tab-a1-content h1,.tab-a2-content h1{
+    color:white;
+   
+}
+
+#button01:hover{
+    border-bottom: 2px solid skyblue;
+}
+#button02:hover{
+    border-bottom: 2px solid red;
+}
+
+.card {
+    background: white;
+    box-shadow: 0 4px 8px 0 grey;
+    transition: 0.3s;
+    width: 20%;
+    border-radius: 5px;
+    color: black;
+    margin-left: 40px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 grey;
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.card2 {
+    background: white;
+    box-shadow: 0 4px 8px 0 grey;
+    transition: 0.3s;
+    width: 20%;
+    border-radius: 5px;
+    color: black;
+    margin-left: 980px;
+    margin-top: -138px;
+}
+
+.card3 {
+    background: white;
+    box-shadow: 0 4px 8px 0 grey;
+    transition: 0.3s;
+    width: 20%;
+    border-radius: 5px;
+    color: black;
+    margin-left: 40px;
+}
+
+.card4 {
+    background: white;
+    box-shadow: 0 4px 8px 0 grey;
+    transition: 0.3s;
+    width: 50%;
+    border-radius: 5px;
+    color: black;
+    margin-left: 40px;
+    margin-top: 60px;
+}
+
+#temperatureTable1{
+  text-align: center;
+  font-size: 12px;
+  width: 100%;
+}
+
+th,td{
+    
+  padding: 15px;
+}
+
+ #temperatureTable1 th {
+    color: white;
+    background-color: black;
+     width: 66.66%
+}
+
+#temperatureTable1 tr:nth-child(even) {
+   background-color: #eee;
+}
+
+#temperatureTable1 tr:nth-child(odd) {
+   background-color: #fff;
+}
+
+
+
+
 
 
 .tabs{
