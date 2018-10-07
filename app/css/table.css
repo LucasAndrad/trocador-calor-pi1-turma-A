@@ -1,0 +1,33 @@
+.card4 {
+	background: rgb(255, 255, 255);
+	transition: 0.3s;
+	width: 30%;
+	color: black;
+	margin-left: 0;
+	margin-top: 60px;
+}
+#temperatureTable{
+  text-align: center;
+  font-size: 12px;
+  width: 100%;
+}
+.card4 th,td{
+  padding: 15px;
+}
+.card4 .container table {
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.card4 .container h4 {
+  text-align: center;
+}
+#temperatureTable th {
+	color: white;
+	background-color: black;
+}
+#temperatureTable tr:nth-child(even) {
+  background-color: #eee;
+}
+#temperatureTable tr:nth-child(odd) {
+  background-color: #fff;
+}

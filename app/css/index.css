@@ -1,31 +1,3 @@
 body{
   font-family: sans-serif;
 }
-.card4 {
-	background: rgb(255, 255, 255);
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	transition: 0.3s;
-	width: 50%;
-	border-radius: 5px;
-	color: black;
-	margin-left: 40px;
-	margin-top: 60px;
-}
-#temperatureTable{
-  text-align: center;
-  font-size: 12px;
-  width: 100%;
-}
-th,td{
-  padding: 15px;
-}
-#temperatureTable th {
-	color: white;
-	background-color: black;
-}
-#temperatureTable tr:nth-child(even) {
-  background-color: #eee;
-}
-#temperatureTable tr:nth-child(odd) {
-  background-color: #fff;
-}
