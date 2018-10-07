@@ -1,20 +1,15 @@
-// var tabButtons=document.querySelectorAll(".tabs .button button");
-var tabPanels=document.querySelectorAll(".tabs  .tab");
-var tabPanels2=document.querySelectorAll(".tabs  .tab2");
 
-function showPanel(panelIndex) {
-    tabPanels.forEach(function(node){
-        node.style.display="none";
-    });
-    switch(panelIndex){
-        case 0:
-            tabPanels[panelIndex].style.display="block";
-            tabPanels2[panelIndex].style.display="none";
-        break;
-        case 1:
-            tabPanels[panelIndex-1].style.display="none";
-            tabPanels2[panelIndex-1].style.display="block";
-        break;
+var tab1 = document.getElementById('tab1');
+var tab2 = document.getElementById('tab2');
+
+function toggleTabs(tabId){
+    console.log(tab1.style);
+    if(tabId<2){
+        tab1.style.display = 'inherit';
+        tab2.style.display = 'none';
+    }
+    else{
+        tab1.style.display = 'none';
+        tab2.style.display = 'inherit';
     }
 }
-showPanel(0);
