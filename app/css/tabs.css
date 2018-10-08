@@ -1,18 +1,28 @@
 .tabs {
   width: 100%;
-  background: #eeeeee;
   display: flex;
+  border-top: 10px solid #769bff;
 }
 .tab {
-  margin-left: 5%;
-  margin-top: 1%;
+  margin-left: 3%;
+  margin-top: 2%;
   margin-bottom: 1%;
-  border-bottom: 2px solid #eeeeee;
-  padding-bottom: 5px;
 }
-.tab:hover{
-  border-bottom: 2px solid black;
+.tab-title {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 2px solid #ffffff;
+}
+#tab1-title {
+  border: 2px solid #769bff;
+}
+#tab1-title:hover{
   cursor: pointer;
+  background: #769bff;
+}
+#tab2-title:hover{
+  cursor: pointer;
+  background: #fd5f54;
 }
 .tab1-content, .tab2-content{
   width: 100%;
