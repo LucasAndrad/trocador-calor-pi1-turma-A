@@ -1,4 +1,4 @@
-.data-container {
+.data-sensor-container {
   width: 68%;
   height: 500px;
   background: #beeaff;
@@ -43,9 +43,9 @@
   color: black;
   vertical-align: top;
 }
-.first-element{
+.first-sensor-element{
   margin: -20px 0px 0px 0px;
 }
-.second-element{
+.second-sensor-element{
   margin: 50px 0px 0px 0px;
 }
