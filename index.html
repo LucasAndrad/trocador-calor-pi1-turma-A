@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="./app/css/index.css">
     <link rel="stylesheet" href="./app/css/tabs.css">
     <link rel="stylesheet" href="./app/css/table.css">
+    <link rel="stylesheet" href="./app/css/sensors.css">
     
+    <script src="./app/components/tabs.js" defer></script>
+    <script src="./app/components/temperatureTable.js" defer></script>
+    <script src="./app/components/sensorsData.js" defer></script>
+
     <!-- This link bellow should be removed -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
   </head>
@@ -22,9 +27,8 @@
     </div>
 
     <div class="tab1-content" id="tab1">
-      <h1>Trocador de calor</h1>
-      <div class="card4">
-        <div class="container">
+      <div class="container1">
+        <div class="table-container">
           <h4>Histórico de temperaturas</h4>
           <table id="temperatureTable">
             <tr>
@@ -64,13 +68,45 @@
             </tr>
           </table>
         </div>
+        
+        <div class="data-container">
+
+          <div class="heat-exchanger-container" style="overflow:auto">
+            <div class="left">
+              <div class="first-element">
+                <span class="temperature-dot"><text id="temperature1"></text></span>
+                <span class="sensor-dot"><text>1</text></span>
+              </div>
+              <div class="second-element">
+                <span class="temperature-dot"><text id="temperature2"></text></span>
+                <span class="sensor-dot"><text>2</text></span>
+              </div>
+            </div>
+
+            <div class="main">
+              <img src="./app/images/heat_exchanger.jpg">
+            </div>
+
+            <div class="right">
+              <div class="first-element">
+                <span class="temperature-dot"><text id="temperature3"></text></span>
+                <span class="sensor-dot"><text>3</text></span>
+              </div>
+              <div class="second-element">
+                <span class="temperature-dot"><text id="temperature4"></text></span>
+                <span class="sensor-dot"><text>4</text></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
+
     </div>
     
     <div class="tab2-content" id="tab2">
       <h1>Simulador</h1>
     </div>
   </body>
-  <script src="./app/components/tabs.js"></script>
-  <script src="./app/components/temperatureTable.js"></script>
 </html>

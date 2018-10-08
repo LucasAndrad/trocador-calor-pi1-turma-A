@@ -24,3 +24,6 @@
 .tab2-content{
   display: none;
 }
+.container1 {
+  display: flex;
+}
