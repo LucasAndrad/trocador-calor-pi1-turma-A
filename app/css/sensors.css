@@ -11,14 +11,14 @@
   justify-content: center;
   align-items: center
 }
-.left {
+.left-sensor {
   float:left;
   text-align:right;
 }
-.main {
+.main-sensor {
   float:left;
 }
-.right {
+.right-sensors {
   float:left;
   text-align:left;
 }
