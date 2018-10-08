@@ -1,0 +1,29 @@
+.table-container {
+  width: 30%;
+  margin-right: 2%;
+}
+#temperatureTable{
+  text-align: center;
+  font-size: 12px;
+  width: 100%;
+}
+.table-container th,td{
+  padding: 10px 10px;
+}
+.table-container table {
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.table-container h4 {
+  text-align: center;
+}
+#temperatureTable th {
+  font-size: 115%;
+  font-weight: bold;
+}
+#temperatureTable tr:nth-child(even) {
+  background-color: #eee;
+}
+#temperatureTable tr:nth-child(odd) {
+  background-color: #fff;
+}

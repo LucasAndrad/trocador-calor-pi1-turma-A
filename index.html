@@ -4,47 +4,111 @@
     <meta charset="UTF-8">
     <title>Trocador de Calor - Monitoramento</title>
     <link rel="stylesheet" href="./app/css/index.css">
+    <link rel="stylesheet" href="./app/css/tabs.css">
+    <link rel="stylesheet" href="./app/css/table.css">
+    <link rel="stylesheet" href="./app/css/sensors.css">
+
+    <script src="./app/components/tabs.js" defer></script>
+    <script src="./app/components/temperatureTable.js" defer></script>
+    <script src="./app/components/sensorsData.js" defer></script>
+    <script src="./app/components/status.js" defer></script>
+
+    <!-- This link bellow should be removed -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
   </head>
   <body>
-    <div class="tabs">
-      <div class="buttons">
-        <div class="button1">
-            <button onclick="showPanel(0)">Principal</button>
-          </div>
-          <div class="button2">
-            <button onclick="showPanel(1)">Simulação</button>
-          </div>
+    <div class="tabs" id="tabs">
+      <div class="tab t1">
+        <div class="tab-title" onclick="toggleTabs(1)" id="tab1-title">Trocador de Calor</div>
       </div>
-        <div class="tab">
-          <h2>Trocador de Calor</h2>
-          <div class="card">
-              <div class="container">
-                <h4><b>Card 1</b></h4>
-                <p>Conteúdo do card</p>
+
+      <div class="tab t2">
+        <div class="tab-title" onclick="toggleTabs(2)" id="tab2-title">Simulador</div>
+      </div>
+    </div>
+
+    <div class="tab1-content" id="tab1">
+      <div class="container1">
+        <div class="table-container">
+          <h4>Histórico de temperaturas</h4>
+          <table id="temperatureTable">
+            <tr>
+              <th>Ordem da Medição</th>
+              <th>Sensor 1 (S1) (°C)</th>
+              <th>Sensor 2 (S2) (°C)</th>
+              <th>Sensor 3 (S3) (°C)</th>
+              <th>Sensor 4 (S4) (°C)</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td id="temperature1"></td>
+              <td id="temperature2"></td>
+              <td id="temperature3"></td>
+              <td id="temperature4"></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td id="temperature5"></td>
+              <td id="temperature6"></td>
+              <td id="temperature7"></td>
+              <td id="temperature8"></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td id="temperature9"></td>
+              <td id="temperature10"></td>
+              <td id="temperature11"></td>
+              <td id="temperature12"></td>
+            </tr>
+            <tr>
+              <td><b>Média</b></td>
+              <td><b id="media1"></b></td>
+              <td><b id="media2"></b></td>
+              <td><b id="media3"></b></td>
+              <td><b id="media4"></b></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="data-container">
+
+          <div class="heat-exchanger-container" style="overflow:auto">
+            <div class="left">
+              <div class="first-element">
+                <span class="temperature-dot"><text id="temperature1"></text></span>
+                <span class="sensor-dot"><text>1</text></span>
+              </div>
+              <div class="second-element">
+                <span class="temperature-dot"><text id="temperature2"></text></span>
+                <span class="sensor-dot"><text>2</text></span>
               </div>
             </div>
-            <div class="card2">
-                <div class="container">
-                  <h4><b>Card 2</b></h4>
-                  <p>Conteúdo do Card</p>
-                </div>
+
+            <div class="main">
+              <img src="./app/images/heat_exchanger.jpg">
             </div>
-        </div>
-        <div class="tab2">
-          <h2> Simulação </h2>
-          <div class="card3">
-              <div class="container">
-                <h4><b>Card 1</b></h4>
-                <p>Conteúdo do Card</p>
+
+            <div class="right">
+              <div class="first-element">
+                <span class="temperature-dot"><text id="temperature3"></text></span>
+                <span class="sensor-dot"><text>3</text></span>
+              </div>
+              <div class="second-element">
+                <span class="temperature-dot"><text id="temperature4"></text></span>
+                <span class="sensor-dot"><text>4</text></span>
               </div>
             </div>
+          </div>
+          <input id="leitura">
+          <div id="sta">STATUS: OK</div>
         </div>
+
+      </div>
+
+    </div>
+
+    <div class="tab2-content" id="tab2">
+      <h1>Simulador</h1>
     </div>
   </body>
-  <body>
-    <input id="leitura">
-    <div id="sta">STATUS: OK</div>
-  </body>
-  <script src="./app/components/tabs.js"></script>
-  <script src="./app/components/status.js"></script>
 </html>
