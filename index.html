@@ -11,6 +11,8 @@
     <script src="./app/components/tabs.js" defer></script>
     <script src="./app/components/temperatureTable.js" defer></script>
     <script src="./app/components/sensorsData.js" defer></script>
+    <script src="./app/components/inputs.js" defer></script>
+
 
     <!-- This link bellow should be removed -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
@@ -105,8 +107,13 @@
 
     </div>
     
-    <div class="tab2-content" id="tab2">
+    <div class="tab2-content" id="tab2" >
       <h1>Simulador</h1>
+      <form id="form1">
+        Tc1: <input type="number" id="tc1" min="0" max="100" value="25"><br>
+        Tc2: <input type="number" id="tc2" min="0" max="100" value="35"><br><br>
+        <input type="button" onclick="receivesInput()" value="Enviar">
+      </form>
     </div>
   </body>
 </html>
