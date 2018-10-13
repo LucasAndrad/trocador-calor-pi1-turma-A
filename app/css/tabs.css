@@ -37,3 +37,12 @@
 .container1 {
   display: flex;
 }
+.submit {
+  display: flex;
+}
+
+.submit-title {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 2px solid #fd5f54;
+}
