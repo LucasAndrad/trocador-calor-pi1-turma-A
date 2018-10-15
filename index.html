@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="./app/css/tabs.css">
     <link rel="stylesheet" href="./app/css/table.css">
     <link rel="stylesheet" href="./app/css/sensors.css">
-    
+
     <script src="./app/components/tabs.js" defer></script>
     <script src="./app/components/temperatureTable.js" defer></script>
     <script src="./app/components/sensorsData.js" defer></script>
+    <script type="text/javascript" src="app/mocks/example_raw.json"></script>
 
     <!-- This link bellow should be removed -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
   </head>
-  <body>
+  <body onload="buildTable()">
     <div class="tabs" id="tabs">
       <div class="tab t1">
         <div class="tab-title" onclick="toggleTabs(1)" id="tab1-title">Trocador de Calor</div>
@@ -30,45 +31,23 @@
       <div class="container1">
         <div class="table-container">
           <h4>Histórico de temperaturas</h4>
-          <table id="temperatureTable">
-            <tr>
-              <th>Ordem da Medição</th>
-              <th>Sensor 1 (S1) (°C)</th>
-              <th>Sensor 2 (S2) (°C)</th>
-              <th>Sensor 3 (S3) (°C)</th>
-              <th>Sensor 4 (S4) (°C)</th>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td id="temperature1"></td>
-              <td id="temperature2"></td>
-              <td id="temperature3"></td>
-              <td id="temperature4"></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td id="temperature5"></td>
-              <td id="temperature6"></td>
-              <td id="temperature7"></td>
-              <td id="temperature8"></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td id="temperature9"></td>
-              <td id="temperature10"></td>
-              <td id="temperature11"></td>
-              <td id="temperature12"></td>
-            </tr>
+          <table>
+            <thead>
+              <tr>
+                <th>Sensor 1 (S1) (°C)</th>
+                <th>Sensor 2 (S2) (°C)</th>
+                <th>Sensor 3 (S3) (°C)</th>
+                <th>Sensor 4 (S4) (°C)</th>
+                <th>Ordem da Medição</th>
+              </tr>
+            </thead>
+            <tbody id="temperatureTable"></tbody>
             <tr>
               <td><b>Média</b></td>
-              <td><b id="media1"></b></td>
-              <td><b id="media2"></b></td>
-              <td><b id="media3"></b></td>
-              <td><b id="media4"></b></td>
             </tr>
           </table>
         </div>
-        
+
         <div class="data-container">
 
           <div class="heat-exchanger-container" style="overflow:auto">
@@ -104,7 +83,7 @@
       </div>
 
     </div>
-    
+
     <div class="tab2-content" id="tab2">
       <h1>Simulador</h1>
     </div>
