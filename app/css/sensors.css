@@ -1,7 +1,11 @@
-.data-container {
+.data-sensor-container {
   width: 68%;
   height: 500px;
   background: #beeaff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center
 }
 .heat-exchanger-container{
   width: 100vw;
@@ -11,14 +15,14 @@
   justify-content: center;
   align-items: center
 }
-.left {
+.left-sensor {
   float:left;
   text-align:right;
 }
-.main {
+.main-sensor {
   float:left;
 }
-.right {
+.right-sensors {
   float:left;
   text-align:left;
 }
@@ -43,9 +47,9 @@
   color: black;
   vertical-align: top;
 }
-.first-element{
+.first-sensor-element{
   margin: -20px 0px 0px 0px;
 }
-.second-element{
+.second-sensor-element{
   margin: 50px 0px 0px 0px;
 }
