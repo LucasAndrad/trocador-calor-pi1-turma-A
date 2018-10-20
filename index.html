@@ -12,7 +12,7 @@
     <script src="./app/components/temperatureTable.js" defer></script>
     <script src="./app/components/sensorsData.js" defer></script>
   </head>
-  <body>
+  <body onload="getSensorsDatas()">
     <div class="tabs" id="tabs">
       <div class="tab t1">
         <div class="tab-title" onclick="toggleTabs(1)" id="tab1-title">Trocador de Calor</div>
