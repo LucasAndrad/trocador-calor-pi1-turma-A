@@ -2,16 +2,18 @@
 // See the second answer to lear how to read data from .json file with JS
 // https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
 
-$(function() {
-  $.getJSON('./app/mocks/example_parsed.json', function(data) {
-    var temperature = data[0].temperature;
-    document.getElementById("s-temperature1").innerHTML = temperature;
-    var temperature = data[1].temperature;
-    document.getElementById("s-temperature2").innerHTML = temperature;
-    var temperature = data[2].temperature;
-    document.getElementById("s-temperature3").innerHTML = temperature;
-    var temperature = data[3].temperature;
-    document.getElementById("s-temperature4").innerHTML = temperature;
+  var SerialPort = require('serialport');
+  var port = new SerialPort('/dev/ttyACM0',{
+    baudRate: 9600,
   });
-});
 
+  port.on('open', onOpen);
+  port.on('data', onData);
+
+  function onOpen(){
+    console.log('Open Conection')
+  }
+
+  function onData(data){
+    console.log(data.toString());
+  }
