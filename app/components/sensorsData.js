@@ -51,11 +51,8 @@ function getSensorsDatas(){
     }
 
     // Trying to get last 2 digits of data
-    try{
+    if(data.length >= 3){
       lastData = data[data.length - 3]+data[data.length - 2];
-    }
-    catch(err){
-      lastData = '';
     }
   })
 }
