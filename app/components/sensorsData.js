@@ -4,6 +4,7 @@ function getSensorsDatas(){
   document.getElementById("s-temperature2").innerHTML = 0;
   document.getElementById("s-temperature3").innerHTML = 0;
   document.getElementById("s-temperature4").innerHTML = 0;
+  document.getElementById("sensor-temperature4").innerHTML = 0;
 
   // Making communication with Serial Port
   var SerialPort = require('serialport');
