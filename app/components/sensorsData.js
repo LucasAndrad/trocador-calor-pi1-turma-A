@@ -43,9 +43,9 @@ function getSensorsDatas(){
         else if (lastData == "9C"){
           document.getElementById("s-temperature4").innerHTML = data;
         }
-        else if (lastData == "9E"){
-          document.getElementById("s-temperature5").innerHTML = data;
-        }
+        // else if (lastData == "9E"){
+        //   document.getElementById("s-temperature5").innerHTML = data;
+        // }
       }
     }
 
