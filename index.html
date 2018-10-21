@@ -11,11 +11,8 @@
     <script src="./app/components/tabs.js" defer></script>
     <script src="./app/components/temperatureTable.js" defer></script>
     <script src="./app/components/sensorsData.js" defer></script>
-
-    <!-- This link bellow should be removed -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
   </head>
-  <body>
+  <body onload="getSensorsDatas()">
     <div class="tabs" id="tabs">
       <div class="tab t1">
         <div class="tab-title" onclick="toggleTabs(1)" id="tab1-title">Trocador de Calor</div>
@@ -95,6 +92,10 @@
               <div class="second-sensor-element">
                 <span class="temperature-dot"><text id="s-temperature4"></text></span>
                 <span class="sensor-dot"><text>4</text></span>
+              </div>
+              <div class="second-sensor-element">
+                <span class="temperature-dot"><text id="s-temperature5"></text></span>
+                <span class="sensor-dot"><text>5</text></span>
               </div>
             </div>
           </div>

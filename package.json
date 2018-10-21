@@ -13,6 +13,10 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "electron": "^2.0.10"
+    "electron": "^2.0.10",
+    "electron-rebuild": "^1.8.2"
+  },
+  "dependencies": {
+    "serialport": "^7.0.2"
   }
 }
