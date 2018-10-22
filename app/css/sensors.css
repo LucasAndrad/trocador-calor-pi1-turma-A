@@ -13,14 +13,17 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
 .left-sensor {
   float:left;
   text-align:right;
 }
 .main-sensor {
-  float:left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .right-sensors {
   float:left;
