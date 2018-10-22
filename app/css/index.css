@@ -11,3 +11,7 @@ body{
   width: 35px;
   text-align: center;
 }
+#start-sensors-button:hover{
+  cursor: pointer;
+  background: #769bff;
+}
