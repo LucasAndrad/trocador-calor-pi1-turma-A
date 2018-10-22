@@ -13,10 +13,8 @@ function finalHotWaterTemperature(){
     var cpc = document.getElementById("cpc").value;
     var hotWaterTemperature = document.getElementById('finalHotWaterTemperature');
     qc = heatTransferRate(mc, cpc, tc2, tc1);
-    console.log("qc = " + qc);
     temp = ((qc/(mh*cph)));
     th2 = th1 - temp;
-    console.log("th2 = " + th2);
     var arredondado = parseFloat(th2.toFixed(4));
     hotWaterTemperature.style.display = 'block';
     document.getElementById("initialTemperature").innerHTML = th1;
