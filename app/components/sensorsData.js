@@ -1,13 +1,24 @@
-function getSensorsDatas(){
+async function getSensorsDatas(){
 
   // Making communication with Serial Port
   var SerialPort = require('serialport');
   var Readline = SerialPort.parsers.Readline
   // '/dev/ttyACM0' is the port for arduino
-  var port = new SerialPort('/dev/ttyACM0',{
+  var path = '/tmp/ttyV0' // '/tmp/ttyV0' for data simulation
+  var port = new SerialPort(path, {
     // Same rate as arduino
     baudRate: 9600,
   });
+
+  // Sleep 200ms to get real result of port.isOpen
+  await sleep(200);
+
+  // Give alert if fail to connect
+  if(!port.isOpen){
+    const {dialog} = require('electron').remote
+    const dialogOptions = {title: 'Erro de comunicação', type: 'info', buttons: ['OK'], message: 'Não foi possível realizar a conexão com o sensor.\nVerifique se o mesmo está conectado e tente novamente.'}
+    dialog.showMessageBox(dialogOptions)
+  }
 
   // Adding parse so it gets full line instead of parts
   var parser = new Readline()
@@ -45,4 +56,8 @@ function getSensorsDatas(){
       lastData = data[data.length - 3] + data[data.length - 2];
     }
   })
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
