@@ -1,0 +1,39 @@
+EN-US:
+  This guide is intended to show step by step how to use the script to simulate the arrival of data via arduino.
+  Step 1:
+    Open terminal.
+  Step 2:
+    Navigate to PATH/app/mocks/arduinoSimulation, where PATH is the project location.
+  Step 3 (skippable):
+    *If you have already installed nodejs and socat:
+      Skip to step 4.
+    *Otherwise:
+      Run $ sudo make install
+  Step 4:
+    Run $ make
+  Step 5:
+    Open a new terminal and navigate to the same path.
+  Step 6:
+    Run $ make run
+  Step 7:
+    All set.
+
+PT-BR:
+  Este guia tem o intuito de mostrar passo a passo como usar o script para simular a chegada de dados via arduino.
+  Passo 1:
+    Abra o terminal.
+  Passo 2:
+    Navegue ate PATH/app/mocks/arduinoSimulation, onde PATH é o local do projeto.
+  Passo 3 (pulável):
+    *Caso já tenha instalado nodejs e socat:
+      Pular para o passo 4.
+    *Caso contrario:
+      Execute o comando $ sudo make install
+  Passo 4:
+    Execute o comando $ make
+  Passo 5:
+    Abra um novo terminal e navegue para o mesmo caminho.
+  Passo 6:
+    Execute o comando $ make run
+  Passo 7:
+    Tudo pronto.
