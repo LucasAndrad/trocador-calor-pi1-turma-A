@@ -7,4 +7,4 @@ install:
 	apt-get update && sudo apt-get install nodejs
 
 run:
-	node arduino-simulation.js
+	./simulate
