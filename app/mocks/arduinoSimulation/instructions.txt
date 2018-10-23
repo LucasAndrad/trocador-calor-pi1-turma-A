@@ -1,9 +1,10 @@
 EN-US:
   This guide is intended to show step by step how to use the script to simulate the arrival of data via arduino.
+  PATH is project location.
   Step 1:
     Open terminal.
   Step 2:
-    Navigate to PATH/app/mocks/arduinoSimulation, where PATH is the project location.
+    Navigate to PATH/app/mocks/arduinoSimulation.
   Step 3 (skippable):
     *If you have already installed nodejs and socat:
       Skip to step 4.
@@ -16,14 +17,17 @@ EN-US:
   Step 6:
     Run $ make run
   Step 7:
+    in PATH/app/components/sensorsData.js change {var path = '/dev/ttyACM0'} to {var path = '/tmp/ttyV0'}
+  Step 8:
     All set.
 
 PT-BR:
   Este guia tem o intuito de mostrar passo a passo como usar o script para simular a chegada de dados via arduino.
+  CAMINHO é o local do projeto.
   Passo 1:
     Abra o terminal.
   Passo 2:
-    Navegue ate PATH/app/mocks/arduinoSimulation, onde PATH é o local do projeto.
+    Navegue ate CAMINHO/app/mocks/arduinoSimulation.
   Passo 3 (pulável):
     *Caso já tenha instalado nodejs e socat:
       Pular para o passo 4.
@@ -36,4 +40,6 @@ PT-BR:
   Passo 6:
     Execute o comando $ make run
   Passo 7:
+    em CAMINHO/app/components/sensorsData.js mude {var path = '/dev/ttyACM0'} to {var path = '/tmp/ttyV0'}
+  Step 8:
     Tudo pronto.

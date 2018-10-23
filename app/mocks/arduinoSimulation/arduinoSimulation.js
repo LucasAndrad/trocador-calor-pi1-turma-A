@@ -9,35 +9,35 @@ async function arduino_simulation(){
     switch (i) {
       case 0:
         await sleep(500);
-        port.write('28 AA AA 3E 13 13 2 F5\n');
+        port.write('28 AA AA 3E 13 13 2 F5 \n');
         temperature = generateRandomNumber(20 , 25);
         await sleep(500);
         port.write(temperature);
         break;
       case 1:
         await sleep(500);
-        port.write('28 AA 81 EE 12 13 2 D7\n');
+        port.write('28 AA 81 EE 12 13 2 D7 \n');
         temperature = generateRandomNumber(30 , 35);
         await sleep(500);
         port.write(temperature);
         break;
       case 2:
         await sleep(500);
-        port.write('28 59 DD 92 1B 13 1 9E\n');
+        port.write('28 59 DD 92 1B 13 1 9E \n');
         temperature = generateRandomNumber(40 , 45);
         await sleep(500);
         port.write(temperature);
         break;
       case 3:
         await sleep(500);
-        port.write('28 D C7 84 1B 13 1 9C\n');
+        port.write('28 D C7 84 1B 13 1 9C \n');
         temperature = generateRandomNumber(50 , 55);
         await sleep(500);
         port.write(temperature);
         break;
       case 4:
         await sleep(500);
-        port.write('28 2F 99 97 1B 13 1 C3\n');
+        port.write('28 2F 99 97 1B 13 1 C3 \n');
         temperature = generateRandomNumber(60 , 65);
         await sleep(500);
         port.write(temperature);
