@@ -1,14 +1,5 @@
 function getSensorsDatas(){
 
-  buildTable();
-
-  // Default values
-  document.getElementById("s-temperature1").innerHTML = 0;
-  document.getElementById("s-temperature2").innerHTML = 0;
-  document.getElementById("s-temperature3").innerHTML = 0;
-  document.getElementById("s-temperature4").innerHTML = 0;
-  document.getElementById("s-temperature5").innerHTML = 0;
-
   // Making communication with Serial Port
   var SerialPort = require('serialport');
   var Readline = SerialPort.parsers.Readline

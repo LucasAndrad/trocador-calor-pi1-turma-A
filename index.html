@@ -11,12 +11,14 @@
     <script src="./app/components/tabs.js" defer></script>
     <script src="./app/components/temperatureTable.js" defer></script>
     <script src="./app/components/sensorsData.js" defer></script>
-    <script type="text/javascript" src="app/mocks/example_raw.json"></script>
     <script src="./app/components/equations.js" defer></script>
+    <script src="./app/components/startApp.js" defer></script>
+
+    <script type="text/javascript" src="app/mocks/example_raw.json"></script>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
   </head>
-  <body onload="getSensorsDatas()">
+  <body onload="startApp()">
 
     <div class="tabs" id="tabs">
       <div class="tab t1">
@@ -26,6 +28,10 @@
       <div class="tab t2">
         <div class="tab-title" onclick="toggleTabs(2)" id="tab2-title">Simulador</div>
       </div>
+          <div class="tab t3">
+        <div class="tab-title" onclick="toggleTabs(3)" id="tab3-title">Gráficos</div>
+      </div>
+        
     </div>
 
     <div class="tab1-content" id="tab1">
@@ -64,6 +70,7 @@
 
             <div class="main-sensor">
               <img src="./app/images/heat_exchanger.png">
+              <div class="start-sensors-button" onclick="getSensorsDatas()" id="start-sensors-button">Start</div>
             </div>
 
             <div class="right-sensors">
@@ -111,5 +118,8 @@
           </div>
       </form>
     </div>
+      <div class="tab3-content" id="tab3">
+         <h1>Gráficos</h1>
+      </div>  
   </body>
 </html>
