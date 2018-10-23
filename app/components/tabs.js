@@ -8,22 +8,16 @@ var tab3Title = document.getElementById('tab3-title');
 
 function toggleTabs(tabId) {
 	if (tabId < 2) {
-		resetTabs();
-		tab1.style.display = 'inherit';
-		tab1Title.style.border = '2px solid #769bff';
-		tabs.style.borderTop = '10px solid #769bff';
+    resetTabs();
+    setTab(tab1, tab1Title, '#769bff');
 	}
 	if (tabId == 2) {
-		resetTabs();
-		tab2.style.display = 'inherit';
-		tab2Title.style.border = '2px solid #fd5f54';
-		tabs.style.borderTop = '10px solid #fd5f54';
+    resetTabs();
+    setTab(tab2, tab2Title, '#fd5f54');
 	}
 	if (tabId > 2) {
-		resetTabs();
-		tab3.style.display = 'inherit';
-		tab3Title.style.border = '2px solid #ADFF2F';
-		tabs.style.borderTop = '10px solid #ADFF2F';
+    resetTabs();
+    setTab(tab3, tab3Title, '#ADFF2F');
 	}
 }
 
@@ -34,4 +28,10 @@ function resetTabs() {
 	tab1Title.style.border = '2px solid #ffffff';
 	tab2Title.style.border = '2px solid #ffffff';
 	tab3Title.style.border = '2px solid #ffffff';
+}
+
+function setTab(tab, title, color) {
+  tab.style.display = 'inherit';
+	title.style.border = '2px solid '+color;
+	tabs.style.borderTop = '10px solid '+color;
 }
