@@ -2,6 +2,18 @@ body{
   font-family: sans-serif;
   overflow-x: hidden;
 }
+.start-sensors-button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 2px solid #769bff;
+  background-color: #ffffff;
+  width: 35px;
+  text-align: center;
+}
+#start-sensors-button:hover{
+  cursor: pointer;
+  background: #769bff;
+}
 
 #sta {
     width: 20%;
@@ -20,4 +32,3 @@ body{
 @keyframes alert{
   from {background-color: #8B0000;}
   to {background-color: #FE2E2E;}
-}

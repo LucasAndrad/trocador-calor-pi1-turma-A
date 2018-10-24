@@ -24,7 +24,12 @@
   cursor: pointer;
   background: #fd5f54;
 }
-.tab1-content, .tab2-content{
+
+#tab3-title:hover{
+    cursor: pointer;
+    background: #ADFF2F;
+}
+.tab1-content, .tab2-content,.tab3-content{
   width: 100%;
   height: 500px;
 }
@@ -33,6 +38,9 @@
 }
 .tab2-content{
   display: none;
+}
+.tab3-content{
+    display: none;
 }
 .container1 {
   display: flex;
