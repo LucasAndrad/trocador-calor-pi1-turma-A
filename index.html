@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="./app/css/tabs.css">
     <link rel="stylesheet" href="./app/css/table.css">
     <link rel="stylesheet" href="./app/css/sensors.css">
+    <link rel="stylesheet" href="./app/css/status.css">
 
     <script src="./app/components/tabs.js" defer></script>
     <script src="./app/components/temperatureTable.js" defer></script>
     <script src="./app/components/sensorsData.js" defer></script>
     <script src="./app/components/equations.js" defer></script>
     <script src="./app/components/startApp.js" defer></script>
+    <script src="./app/components/status.js" defer></script>
 
     <script type="text/javascript" src="app/mocks/example_raw.json"></script>
 
@@ -31,7 +33,7 @@
           <div class="tab t3">
         <div class="tab-title" onclick="toggleTabs(3)" id="tab3-title">Gráficos</div>
       </div>
-        
+
     </div>
 
     <div class="tab1-content" id="tab1">
@@ -69,6 +71,10 @@
             </div>
 
             <div class="main-sensor">
+              <div class="status-container">
+                <input id="leitura">
+                <div id="sta">STATUS: OK</div>
+              </div>
               <img src="./app/images/heat_exchanger.png">
               <div class="start-sensors-button" onclick="getSensorsDatas()" id="start-sensors-button">Start</div>
             </div>
@@ -88,7 +94,6 @@
               </div>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -120,6 +125,6 @@
     </div>
       <div class="tab3-content" id="tab3">
          <h1>Gráficos</h1>
-      </div>  
+      </div>
   </body>
 </html>

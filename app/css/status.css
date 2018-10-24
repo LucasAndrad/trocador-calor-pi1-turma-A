@@ -1,0 +1,19 @@
+#sta {
+    width: 180px;
+    border-radius: 50px;
+    height: 25px;
+    padding: 20px;
+    background: #01DF01;
+    font-size: 22px;
+    text-align: center;
+    line-height: 20px;
+    margin: 0 auto;
+    animation-name: null;
+    animation-duration: 0.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+@keyframes alert{
+  from {background-color: #8B0000;}
+  to {background-color: #FE2E2E;}
+}
