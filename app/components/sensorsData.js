@@ -4,7 +4,8 @@ function getSensorsDatas(){
   var SerialPort = require('serialport');
   var Readline = SerialPort.parsers.Readline
   // '/dev/ttyACM0' is the port for arduino
-  var port = new SerialPort('/dev/ttyACM0',{
+  var path = '/dev/ttyACM0' // '/tmp/ttyV0' for data simulation
+  var port = new SerialPort(path,{
     // Same rate as arduino
     baudRate: 9600,
   });
