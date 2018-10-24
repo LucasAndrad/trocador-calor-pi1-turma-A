@@ -20,6 +20,12 @@ async function getSensorsDatas(){
     dialog.showMessageBox(dialogOptions)
   }
 
+  port.on('close', function (err) {
+    const {dialog} = require('electron').remote
+    const dialogOptions = {title: 'Comunicação encerrada.', type: 'info', buttons: ['OK'], message: 'A comunicação foi encerrada.\nVerifique a conexão com os sensores e tente novamente.'}
+    dialog.showMessageBox(dialogOptions)
+});
+
   // Adding parse so it gets full line instead of parts
   var parser = new Readline()
   port.pipe(parser)
