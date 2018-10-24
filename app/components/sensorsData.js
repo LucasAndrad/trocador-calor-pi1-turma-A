@@ -1,3 +1,7 @@
+function startButtonHolder(){
+  return 0;
+}
+
 async function getSensorsDatas(){
 
   // Making communication with Serial Port
@@ -8,6 +12,10 @@ async function getSensorsDatas(){
   var port = new SerialPort(path, {
     // Same rate as arduino
     baudRate: 9600,
+  });
+
+  port.on('open', function(err) {
+    document.getElementById('start-sensors-button').setAttribute( "onclick", "startButtonHolder()" );
   });
 
   // Sleep 200ms to get real result of port.isOpen
@@ -21,10 +29,11 @@ async function getSensorsDatas(){
   }
 
   port.on('close', function (err) {
+    document.getElementById('start-sensors-button').setAttribute( "onclick", "getSensorsDatas()" );
     const {dialog} = require('electron').remote
     const dialogOptions = {title: 'Comunicação encerrada.', type: 'info', buttons: ['OK'], message: 'A comunicação foi encerrada.\nVerifique a conexão com os sensores e tente novamente.'}
     dialog.showMessageBox(dialogOptions)
-});
+  });
 
   // Adding parse so it gets full line instead of parts
   var parser = new Readline()
