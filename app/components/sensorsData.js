@@ -63,6 +63,7 @@ async function getSensorsDatas(){
         document.getElementById("s-temperature3").innerHTML = data;
       }
       else if (lastData == "9C"){
+        checkStatus(data);
         document.getElementById("s-temperature4").innerHTML = data;
       }
       else if (lastData == "9E"){
