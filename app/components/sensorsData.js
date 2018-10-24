@@ -14,6 +14,7 @@ async function getSensorsDatas(){
     baudRate: 9600,
   });
 
+  // If it starts communication desactivate button
   port.on('open', function(err) {
     document.getElementById('start-sensors-button').setAttribute( "onclick", "startButtonHolder()" );
   });
@@ -29,7 +30,10 @@ async function getSensorsDatas(){
   }
 
   port.on('close', function (err) {
+
+    // If communication breaks reactivate button
     document.getElementById('start-sensors-button').setAttribute( "onclick", "getSensorsDatas()" );
+
     const {dialog} = require('electron').remote
     const dialogOptions = {title: 'Comunicação encerrada.', type: 'info', buttons: ['OK'], message: 'A comunicação foi encerrada.\nVerifique a conexão com os sensores e tente novamente.'}
     dialog.showMessageBox(dialogOptions)
