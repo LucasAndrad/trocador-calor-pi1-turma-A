@@ -2,7 +2,7 @@ body{
   font-family: sans-serif;
   overflow-x: hidden;
 }
-.start-sensors-button {
+.sensors-button {
   padding: 10px 15px;
   border-radius: 5px;
   border: 2px solid #769bff;
@@ -10,7 +10,8 @@ body{
   width: 35px;
   text-align: center;
 }
-#start-sensors-button:hover{
+
+#sensors-button:hover{
   cursor: pointer;
   background: #769bff;
 }
