@@ -1,19 +1,23 @@
-function startButtonHolder(){
+// Making communication with Serial Port
+var SerialPort = require('serialport');
+var Readline = SerialPort.parsers.Readline
+// '/dev/ttyACM0' is the port for arduino
+var path = '/tmp/ttyV0' // '/tmp/ttyV0' for data simulation
+var port = new SerialPort(path, {
+  // Same rate as arduino
+  baudRate: 9600,
+});
+
+function stopSensorsDatas() {
+  port.close();
+}
+
+function startButtonHolder() {
   return 0;
 }
 
-async function getSensorsDatas(){
-
-  // Making communication with Serial Port
-  var SerialPort = require('serialport');
-  var Readline = SerialPort.parsers.Readline
-  // '/dev/ttyACM0' is the port for arduino
-  var path = '/tmp/ttyV0' // '/tmp/ttyV0' for data simulation
-  var port = new SerialPort(path, {
-    // Same rate as arduino
-    baudRate: 9600,
-  });
-
+async function getSensorsDatas() {
+  port.open();
   // If it starts communication desactivate button
   port.on('open', function(err) {
     document.getElementById('start-sensors-button').setAttribute( "onclick", "startButtonHolder()" );
@@ -35,7 +39,7 @@ async function getSensorsDatas(){
     document.getElementById('start-sensors-button').setAttribute( "onclick", "getSensorsDatas()" );
 
     const {dialog} = require('electron').remote
-    const dialogOptions = {title: 'Comunicação encerrada.', type: 'info', buttons: ['OK'], message: 'A comunicação foi encerrada.\nVerifique a conexão com os sensores e tente novamente.'}
+    const dialogOptions = {title: 'Comunicação encerrada.', type: 'info', buttons: ['OK'], message: 'A comunicação foi encerrada.\n'}
     dialog.showMessageBox(dialogOptions)
   });
 
