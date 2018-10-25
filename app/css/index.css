@@ -19,7 +19,12 @@ body{
   margin-right: 35px;
 }
 
-#sensors-button:hover{
+#start-sensors-button:hover{
+  cursor: pointer;
+  background: #769bff;
+}
+
+#stop-sensors-button:hover{
   cursor: pointer;
   background: #769bff;
 }
