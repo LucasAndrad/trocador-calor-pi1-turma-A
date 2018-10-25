@@ -35,12 +35,16 @@ async function getSensorsDatas() {
     dialog.showMessageBox(dialogOptions)
   }
 
+  var alreadyClosed = false;
   port.on('close', function (err) {
-    // If communication breaks reactivate button
-    document.getElementById('start-sensors-button').setAttribute( "onclick", "getSensorsDatas()" );
+    if (!alreadyClosed){
+      // If communication breaks reactivate button
+      document.getElementById('start-sensors-button').setAttribute( "onclick", "getSensorsDatas()" );
 
-    const dialogOptions = {title: 'Comunicação encerrada.', type: 'info', buttons: ['OK'], message: 'A comunicação foi encerrada.\n'}
-    dialog.showMessageBox(dialogOptions)
+      const dialogOptions = {title: 'Comunicação encerrada.', type: 'info', buttons: ['OK'], message: 'A comunicação foi encerrada.\n'}
+      dialog.showMessageBox(dialogOptions)
+    }
+    alreadyClosed = true;
   });
 
   // Adding parse so it gets full line instead of parts
