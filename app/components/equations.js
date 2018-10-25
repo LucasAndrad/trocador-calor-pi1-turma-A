@@ -1,3 +1,16 @@
+
+function Interpolizer(){
+    var a, b, c, d, e;
+    a = 22;
+    b = 27;
+    c =  4.179;
+    d = 4.181;
+    e = 25;
+    
+    x = d + (((e-a) * (c-d)) / (b-a))
+    console.log("Interpolação = " + x);
+}
+
 function heatTransferRate(mc, tc2, tc1, cpc){
     qc = mc * cpc * (tc2 - tc1);
     console.log("cpc = " + cpc)
@@ -12,6 +25,7 @@ function finalHotWaterTemperature(){
     var mh = document.getElementById("mh").value;    
     var cph = document.getElementById("cph").value;    
     var cpc = 0;
+    Interpolizer();
     var hotWaterTemperature = document.getElementById('finalHotWaterTemperature');
     cpc = ((parseInt(tc1) + parseInt(tc2))/2);
     qc = heatTransferRate(mc,tc2,tc1,cpc);
