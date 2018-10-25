@@ -2,6 +2,12 @@ body{
   font-family: sans-serif;
   overflow-x: hidden;
 }
+
+.sensors-button-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .sensors-button {
   padding: 10px 15px;
   border-radius: 5px;
@@ -9,6 +15,8 @@ body{
   background-color: #ffffff;
   width: 35px;
   text-align: center;
+  margin-left: 35px;
+  margin-right: 35px;
 }
 
 #sensors-button:hover{
