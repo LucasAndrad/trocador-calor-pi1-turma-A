@@ -14,3 +14,19 @@ body{
   cursor: pointer;
   background: #769bff;
 }
+#sendButton{
+  width:40px;
+  height: 35px;
+  position: absolute;
+  left: 240px;
+  right: 0px;
+  top:10px;
+}
+
+#infoButton{
+  width:30px;
+  height: 25px;
+  position: absolute;
+  left: 240px;
+  right: 0px;
+}
