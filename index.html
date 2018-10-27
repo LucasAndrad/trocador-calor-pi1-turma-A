@@ -76,7 +76,10 @@
                 <div id="sta">STATUS: OK</div>
               </div>
               <img src="./app/images/heat_exchanger.png">
-              <div class="start-sensors-button" onclick="getSensorsDatas()" id="start-sensors-button">Start</div>
+              <div class="sensors-button-container">
+                <div class="sensors-button" onclick="stopSensorsDatas()" id="stop-sensors-button">Stop</div>
+                <div class="sensors-button" onclick="getSensorsDatas()" id="start-sensors-button">Start</div>
+              </div>
             </div>
 
             <div class="right-sensors">
