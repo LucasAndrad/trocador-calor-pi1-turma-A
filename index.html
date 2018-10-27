@@ -57,7 +57,9 @@
           </table>
         </div>
         <div class="data-sensor-container">
-
+          <div class="status-container">
+            <div id="sta">STATUS: OK</div>
+          </div>
           <div class="heat-exchanger-container" style="overflow:auto">
             <div class="left-sensors">
               <div class="first-sensor-element">
@@ -71,10 +73,6 @@
             </div>
 
             <div class="main-sensor">
-              <div class="status-container">
-                <input id="leitura">
-                <div id="sta">STATUS: OK</div>
-              </div>
               <img src="./app/images/heat_exchanger.png">
               <div class="sensors-button-container">
                 <div class="sensors-button" onclick="stopSensorsDatas()" id="stop-sensors-button">Stop</div>

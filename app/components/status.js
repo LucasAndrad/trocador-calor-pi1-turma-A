@@ -1,7 +1,6 @@
-var max_temp = 60;
-var input = document.getElementById("leitura");
-input.addEventListener("input",function() {
-  if(input.value <= max_temp) {
+function checkStatus(temperatureSensor4) {
+  var max_temp = 60;
+  if(temperatureSensor4 <= max_temp) {
     document.getElementById("sta").style.background ="#01DF01";
     document.getElementById("sta").style.animationName="null";
     document.getElementById("sta").innerHTML = "STATUS: OK";
@@ -11,4 +10,4 @@ input.addEventListener("input",function() {
     document.getElementById("sta").style.animationName="alert";
     document.getElementById("sta").innerHTML = "STATUS: ALERTA";
   }
-});
+}

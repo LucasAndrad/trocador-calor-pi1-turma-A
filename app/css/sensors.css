@@ -3,7 +3,7 @@
   height: 500px;
   background: #beeaff;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -15,18 +15,21 @@
   justify-content: center;
   align-items: center;
 }
-.left-sensor {
+.left-sensors {
   float:left;
   text-align:right;
+  margin-top: -80px;
 }
 .main-sensor {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: -40px;
 }
 .right-sensors {
   float:left;
+  margin-top: -40px;
   text-align:left;
 }
 .sensor-dot{
