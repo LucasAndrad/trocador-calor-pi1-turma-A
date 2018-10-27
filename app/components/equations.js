@@ -1,7 +1,3 @@
-var tc1 = document.getElementById("tc1").value;
-var tc2 = document.getElementById("tc2").value;
-var mc = document.getElementById("mc").value;
-var th1 = document.getElementById("th1").value;
 
 function Interpolizer(a,b,c,d,e){
     // var a, b, c, d, e;
@@ -18,7 +14,7 @@ function Interpolizer(a,b,c,d,e){
 
 function heatTransferRate(mc, tc2, tc1, cpc){
     qc = mc * cpc * (tc2 - tc1);
-    console.log("qc = " + qc);
+    // console.log("qc = " + qc);
     return qc;
 }
 
@@ -47,12 +43,6 @@ function readTableTPSW(cpc){
     }
 }
 
-function readTable(){
-    for(i = 0; i < tableTPSIWS.length; i++){
-        console.log(tableTPSIWS[i].temperature, tableTPSIWS[i].cpf);
-    }
-}
-
 function celsiusToKelvin(celsius){
     temperatureKelvin = parseFloat(273.15)+parseFloat(celsius);
     return temperatureKelvin;
@@ -63,22 +53,22 @@ function kelvinToCelsius(kelvin){
     return temperatureCelsius;
 }
 
-function finalHotWaterTemperature(){
-    // var tc1 = document.getElementById("tc1").value;
-    // var tc2 = document.getElementById("tc2").value;
-    // var mc = document.getElementById("mc").value;
-    // var th1 = document.getElementById("th1").value;
+function calculateValuesOfSimulation(){
     var mh = 0.139; //Vazão da água fria
-    var cph;
-    var cpc;
-    var auxQc;
+    var cph, cpc, auxQc;
+    var tpd;
+    var hpd;
+    var tc1 = document.getElementById("tc1").value;
+    var tc2 = document.getElementById("tc2").value;
+    var mc = document.getElementById("mc").value;
+    var th1 = document.getElementById("th1").value;
 
-    var hotWaterTemperature = document.getElementById('finalHotWaterTemperature');
+    // var hotWaterTemperature = document.getElementById('finalHotWaterTemperature');
     mediaTc = ((parseFloat(tc1) + parseFloat(tc2))/2); //Temperatura média da agua fria
     mediaTh = 52; //Temperatura média da agua quente
-    cpc = celsiusToKelvin(mediaTc);  
+    cpc = celsiusToKelvin(mediaTc);
     cpc = readTableTPSW(cpc);
-    cph = celsiusToKelvin(mediaTh); //Temperatura em Kelvin 
+    cph = celsiusToKelvin(mediaTh); //Temperatura em Kelvin
     cph = readTableTPSW(cph);
 
     qc = heatTransferRate(mc,tc2,tc1,cpc);
@@ -86,16 +76,18 @@ function finalHotWaterTemperature(){
     temp = ((qc/(mh*cph)));
     th2 = th1 - temp;
     var arredondado = parseFloat(th2.toFixed(4));
-    hotWaterTemperature.style.display = 'block';
+    // hotWaterTemperature.style.display = 'block';
     document.getElementById("initialTemperature").innerHTML = th1;
     document.getElementById("th2").innerHTML = arredondado;
-    tubesPressureDrop();
-    hullPressureDrop(tc1,tc2,th1,th2);
+    tpd = tubesPressureDrop();
+    hpd = hullPressureDrop(tc1,tc2,th1,th2);
+    document.getElementById("tubePressure").innerHTML = tpd.toFixed(6);
+    document.getElementById("hullPressure").innerHTML = hpd.toFixed(6);
 }
 
 function tubesPressureDrop(){
     var f = 0.0112; //coeficiente de atrito
-    var L = 0.98; //Comprimento do tubo de cobre em metros
+    var Lc = 0.98; //Comprimento do tubo de cobre em metros
     var np = 1; //Número de passes
     var di = 0.00757; //Diâmetros interno dos tubos
     var ro = 974.8; //Em kg/m^3
@@ -103,13 +95,14 @@ function tubesPressureDrop(){
     var mh = 0.139; //Vazão da água fria
     var atp;
     var nt = 28; //Número de tubos de cobre
-    
+
     atp = ((Math.PI*Math.pow(di,2))/4) * (nt/2);
     Um = mh/(ro*atp);
-    Dpt = (parseInt((4*f)*((L*np)/di)) + parseInt(4*np)) * ro*((Math.pow(Um,2)/2));
+    Dpt = (parseFloat((4*f)*((Lc*np)/di)) + parseFloat(4*np)) * ro*((Math.pow(Um,2)/2));
     console.log("atp = " + atp);
     console.log("Um = " + Um);
     console.log("Dpt = " + Dpt);
+    return Dpt;
 }
 
 function readTableTPSIWS(tw){
@@ -140,7 +133,7 @@ function readTableTPSIWS(tw){
 function hullPressureDrop(tc1,tc2,th1,th2){
     var f = 0.0112; //coeficiente de atrito
     var Gsh = 8.1590; //velocidade mássica aparente
-    var nc = 5; 
+    var nc = 5;
     var Ds =  0.11349; //diâmetro externo do casco
     var ro = 974.8; //Em kg/m^3
     var De =  0.0386; //Diâmetro equivalente aparente
@@ -155,7 +148,7 @@ function hullPressureDrop(tc1,tc2,th1,th2){
     tw = celsiusToKelvin(twCelsius);
     console.log("tw = "+tw);
     auxUw = readTableTPSIWS(tw);
-    uw = auxUw * Math.pow(10,(-4));     
+    uw = auxUw * Math.pow(10,(-4));
     console.log("uw = " + uw);
     phi = Math.pow((ub/uw),0.14);
     console.log("phi = "+phi);
@@ -165,4 +158,5 @@ function hullPressureDrop(tc1,tc2,th1,th2){
       está dando 0,002394758 no software e 0,006863 no memorial de calculos.
       Phi aparenta estar ok.
     */
+    return Dps;
 }
