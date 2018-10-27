@@ -1,3 +1,8 @@
+var tc1 = document.getElementById("tc1").value;
+var tc2 = document.getElementById("tc2").value;
+var mc = document.getElementById("mc").value;
+var th1 = document.getElementById("th1").value;
+
 function Interpolizer(a,b,c,d,e){
     // var a, b, c, d, e;
     // a = 22; // A é limite inferior
@@ -43,8 +48,8 @@ function readTableTPSW(cpc){
 }
 
 function readTable(){
-    for(i = 0; i < tableOfTPSW.length; i++){
-        console.log(tableOfTPSW[i].temperature, tableOfTPSW[i].cpf);
+    for(i = 0; i < tableTPSIWS.length; i++){
+        console.log(tableTPSIWS[i].temperature, tableTPSIWS[i].cpf);
     }
 }
 
@@ -59,10 +64,10 @@ function kelvinToCelsius(kelvin){
 }
 
 function finalHotWaterTemperature(){
-    var tc1 = document.getElementById("tc1").value;
-    var tc2 = document.getElementById("tc2").value;
-    var mc = document.getElementById("mc").value;
-    var th1 = document.getElementById("th1").value;
+    // var tc1 = document.getElementById("tc1").value;
+    // var tc2 = document.getElementById("tc2").value;
+    // var mc = document.getElementById("mc").value;
+    // var th1 = document.getElementById("th1").value;
     var mh = 0.139; //Vazão da água fria
     var cph;
     var cpc;
@@ -85,6 +90,7 @@ function finalHotWaterTemperature(){
     document.getElementById("initialTemperature").innerHTML = th1;
     document.getElementById("th2").innerHTML = arredondado;
     tubesPressureDrop();
+    hullPressureDrop(tc1,tc2,th1,th2);
 }
 
 function tubesPressureDrop(){
@@ -106,7 +112,32 @@ function tubesPressureDrop(){
     console.log("Dpt = " + Dpt);
 }
 
-function hullPressureDrop(){
+function readTableTPSIWS(tw){
+    var uw;
+    var previous;
+    var posterior;
+    var temperaturePrevious;
+    var temperaturePosterior;
+    var aux;
+
+    for(i = 0; i < tableTPSIWS.length; i++){
+        if(tw == tableTPSIWS[i].temperature){
+            uw = tableTPSIWS[i].mi;
+            return uw;
+        }else if(tw < tableTPSIWS[i].temperature){
+            temperaturePrevious = tableTPSIWS[i-1].temperature;
+            temperaturePosterior = tableTPSIWS[i+1].temperature;
+            previous = tableTPSIWS[i-1].mi;
+            posterior = tableTPSIWS[i].mi;
+            uw = Interpolizer(temperaturePrevious, temperaturePosterior, posterior, previous, tw);
+            console.log("anterior = " + previous);
+            console.log("posterior = " + posterior);
+            return uw;
+        }
+        // console.log(tableOfTPSW[i].temperature, TableTPSIWS[i].cpf);
+    }
+}
+function hullPressureDrop(tc1,tc2,th1,th2){
     var f = 0.0112; //coeficiente de atrito
     var Gsh = 8.1590; //velocidade mássica aparente
     var nc = 5; 
@@ -116,7 +147,22 @@ function hullPressureDrop(){
     var phi; //Tabela B-2
     var ub = 0.00085;
     var uw; //Tabela B-2
+    var twCelsius;
+    var auxUw;
 
+    twCelsius = 0.5*(parseFloat((parseFloat(tc1)+parseFloat(tc2))/2) + parseFloat((parseFloat(th1)+parseFloat(th2))/2));
+    console.log("twCelsius = "+twCelsius);
+    tw = celsiusToKelvin(twCelsius);
+    console.log("tw = "+tw);
+    auxUw = readTableTPSIWS(tw);
+    uw = auxUw * Math.pow(10,(-4));     
+    console.log("uw = " + uw);
     phi = Math.pow((ub/uw),0.14);
-    Dps = (f*Math.pow(Gsh,2) * (nc-1)*Ds)/2*ro*De*phi;
+    console.log("phi = "+phi);
+    Dps = (f*Math.pow(Gsh,2) * (nc-1)*Ds)/(2*ro*De*phi);
+    console.log("Dps = "+Dps);
+    /*Provavelmente algum valor que ela passou está errado, porque
+      está dando 0,002394758 no software e 0,006863 no memorial de calculos.
+      Phi aparenta estar ok.
+    */
 }
