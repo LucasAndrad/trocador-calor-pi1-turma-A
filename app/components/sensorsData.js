@@ -61,7 +61,7 @@ async function getSensorsDatas() {
     var parsed_data = parseFloat(data);
 
     // If data is numeric
-    if (typeof data != typeof NaN){
+    if (typeof data != typeof NaN && data.length < 8){
       if (lastData == "D7"){
         document.getElementById("s-temperature1").innerHTML = data;
         nextSensorData[0] = parsed_data
