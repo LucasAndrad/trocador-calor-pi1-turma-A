@@ -5,7 +5,7 @@
     <title>Trocador de Calor - Monitoramento</title>
     <link rel="stylesheet" href="./app/css/index.css">
     <link rel="stylesheet" href="./app/css/tabs.css">
-    <link rel="stylesheet" href="./app/css/table.css">
+    <link rel="stylesheet" href="./app/css/chart.css">
     <link rel="stylesheet" href="./app/css/sensors.css">
     <link rel="stylesheet" href="./app/css/status.css">
 
@@ -19,6 +19,8 @@
     <script type="text/javascript" src="app/mocks/example_raw.json"></script>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
+    <script src="./app/components/chart.js"></script>
   </head>
   <body onload="startApp()">
 
@@ -38,23 +40,8 @@
 
     <div class="tab1-content" id="tab1">
       <div class="container1">
-        <div class="table-container">
-          <h4>Histórico de temperaturas</h4>
-          <table>
-            <thead>
-              <tr>
-                <th>Sensor 1 (S1) (°C)</th>
-                <th>Sensor 2 (S2) (°C)</th>
-                <th>Sensor 3 (S3) (°C)</th>
-                <th>Sensor 4 (S4) (°C)</th>
-                <th>Ordem da Medição</th>
-              </tr>
-            </thead>
-            <tbody id="temperatureTable"></tbody>
-            <tr>
-              <td><b>Média</b></td>
-            </tr>
-          </table>
+        <div class="chart-container">
+            <div id='chart'></div>
         </div>
         <div class="data-sensor-container">
           <div class="status-container">
