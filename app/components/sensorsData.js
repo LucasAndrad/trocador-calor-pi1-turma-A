@@ -60,30 +60,29 @@ async function getSensorsDatas() {
   parser.on('data', function (data) {
     var parsed_data = parseFloat(data);
 
-    // If data is float
-    // Data.legth is used because sometimes it was getting unwanted values from serial number
-    if (parsed_data != NaN && data.length < 10){
+    // If data is numeric
+    if (typeof data != typeof NaN){
       if (lastData == "D7"){
         document.getElementById("s-temperature1").innerHTML = data;
-        nextSensorData[0] = data
+        nextSensorData[0] = parsed_data
         updateChart(nextSensorData)
       }
       else if (lastData == "F5"){
         document.getElementById("s-temperature2").innerHTML = data;
-        nextSensorData[1] = data
+        nextSensorData[1] = parsed_data
       }
       else if (lastData == "C3"){
         document.getElementById("s-temperature3").innerHTML = data;
-        nextSensorData[2] = data
+        nextSensorData[2] = parsed_data
       }
       else if (lastData == "9C"){
         checkStatus(data);
         document.getElementById("s-temperature4").innerHTML = data;
-        nextSensorData[3] = data
+        nextSensorData[3] = parsed_data
       }
       else if (lastData == "9E"){
         document.getElementById("s-temperature5").innerHTML = data;
-        nextSensorData[4] = data
+        nextSensorData[4] = parsed_data
       }
     }
 
