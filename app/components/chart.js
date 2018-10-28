@@ -1,26 +1,43 @@
+var sensorsDatas = [
+  ['tempo', '1', '2','3','4','5'],
+  [-10,   0,0,0,0,0],
+  [-9,   0,0,0,0,0],
+  [-8,   0,0,0,0,0],
+  [-7,   0,0,0,0,0],
+  [-6,   0,0,0,0,0],
+  [-5,   0,0,0,0,0],
+  [-4,   0,0,0,0,0],
+  [-3,   0,0,0,0,0],
+  [-2,   0,0,0,0,0],
+  [-1,   0,0,0,0,0],
+  [0,   10,50,60,70,80],
+]
+
+function updateChart(){
+  for (var i = 1; i <= 10; i++){
+    sensorsDatas[i][0]++
+    for (var j = 1; j <= 5; j++){
+      sensorsDatas[i][j] = sensorsDatas[i+1][j]
+    }
+  }
+  sensorsDatas[11][0]++
+  for (var i = 1; i <= 5 ; i++) {
+    sensorsDatas[11][i] = Math.random()
+  }
+
+  drawChart()
+}
+
 google.charts.load('current', {packages: ['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['tempo', 'Sensor1', 'Sensor2','Sensor3','Sensor4','Sensor5'],
-          ['0',   10,50,60,70,80],
-          ['10',   30,10,0,0,0],
-          ['20',   40,56,57,44,10],
-          ['30',   50,8,8,35,36],
-          ['40',   60,25,24,20,10],
-          ['50',   60,25,24,20,10],
-          ['60',   60,25,24,20,10],
-          ['70',   60,25,24,20,10],
-          ['80',   60,25,24,20,10],
-          ['90',   60,25,24,20,10],
-          ['100',   60,25,24,20,10],
-        ]);
+        var data = google.visualization.arrayToDataTable(sensorsDatas);
 
         var options = {
           title: 'Variação de temperatura',
           curveType:'function',
-        
+
             VAxis:{
                 format: 'currency',
                 gridlines:{count:5} },
