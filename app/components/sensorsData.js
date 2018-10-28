@@ -15,6 +15,9 @@ function startButtonHolder() {
   return 0;
 }
 
+var isCicled = false
+var nextSensorData = [0,0,0,0]
+
 async function getSensorsDatas() {
   port.open(function (err) {
     if (err) {
@@ -63,19 +66,25 @@ async function getSensorsDatas() {
     if (parsed_data != NaN && data.length < 10){
       if (lastData == "D7"){
         document.getElementById("s-temperature1").innerHTML = data;
+        nextSensorData[0] = data
+        updateChart(nextSensorData)
       }
       else if (lastData == "F5"){
         document.getElementById("s-temperature2").innerHTML = data;
+        nextSensorData[1] = data
       }
       else if (lastData == "C3"){
         document.getElementById("s-temperature3").innerHTML = data;
+        nextSensorData[2] = data
       }
       else if (lastData == "9C"){
         checkStatus(data);
         document.getElementById("s-temperature4").innerHTML = data;
+        nextSensorData[3] = data
       }
       else if (lastData == "9E"){
         document.getElementById("s-temperature5").innerHTML = data;
+        nextSensorData[4] = data
       }
     }
 
