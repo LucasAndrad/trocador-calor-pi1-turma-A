@@ -10,10 +10,10 @@ var sensorsDatas = [
   [-3,   0,0,0,0,0],
   [-2,   0,0,0,0,0],
   [-1,   0,0,0,0,0],
-  [0,   10,50,60,70,80],
+  [0,   0,0,0,0,0],
 ]
 
-function updateChart(){
+function updateChart(nextData){
   for (var i = 1; i <= 10; i++){
     sensorsDatas[i][0]++
     for (var j = 1; j <= 5; j++){
@@ -22,7 +22,7 @@ function updateChart(){
   }
   sensorsDatas[11][0]++
   for (var i = 1; i <= 5 ; i++) {
-    sensorsDatas[11][i] = Math.random()
+    sensorsDatas[11][i] = nextData[i-1]
   }
 
   drawChart()
