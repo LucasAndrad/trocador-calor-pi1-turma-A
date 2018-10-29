@@ -91,6 +91,7 @@ function updateChart(nextData){
   dataSensor3[10] = nextData[2]
   dataSensor4[10] = nextData[3]
   dataSensor5[10] = nextData[4]
+  chart.update();
 }
 // var sensorsDatas = [
 //   ['tempo', '1', '2','3','4','5'],
