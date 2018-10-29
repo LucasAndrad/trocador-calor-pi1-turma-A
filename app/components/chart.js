@@ -78,6 +78,20 @@ var config = {
 var ctx = document.getElementById('chart').getContext('2d');
 chart = new Chart(ctx, config);
 
+function updateChart(nextData){
+  for (var i = 0; i<10; i++){
+    dataSensor1[i] = dataSensor1[i+1]
+    dataSensor2[i] = dataSensor2[i+1]
+    dataSensor3[i] = dataSensor3[i+1]
+    dataSensor4[i] = dataSensor4[i+1]
+    dataSensor5[i] = dataSensor5[i+1]
+  }
+  dataSensor1[10] = nextData[0]
+  dataSensor2[10] = nextData[1]
+  dataSensor3[10] = nextData[2]
+  dataSensor4[10] = nextData[3]
+  dataSensor5[10] = nextData[4]
+}
 // var sensorsDatas = [
 //   ['tempo', '1', '2','3','4','5'],
 //   [-10,   0,0,0,0,0],
