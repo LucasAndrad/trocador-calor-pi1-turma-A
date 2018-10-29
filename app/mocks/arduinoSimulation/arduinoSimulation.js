@@ -31,7 +31,7 @@ async function arduino_simulation(){
       case 3:
         await sleep(250);
         port.write('28 D C7 84 1B 13 1 9C \n');
-        temperature = generateRandomNumber(50 , 55);
+        temperature = generateRandomNumber(58 , 62);
         await sleep(250);
         port.write(temperature);
         break;

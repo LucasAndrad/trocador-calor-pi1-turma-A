@@ -1,14 +1,12 @@
 #sta {
-    width: 180px;
-    border-radius: 50px;
-    height: 25px;
-    padding: 20px;
+    width: 140px;
+    border-radius: 15px;
+    height: 35px;
     background: #01DF01;
-    font-size: 22px;
+    font-size: 16px;
     text-align: center;
-    line-height: 20px;
-    margin: 0 auto;
-    animation-name: null;
+    line-height: 35px;
+    margin-top: 60px;
     animation-duration: 0.5s;
     animation-direction: alternate;
     animation-iteration-count: infinite;
