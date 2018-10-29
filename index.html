@@ -15,12 +15,12 @@
     <script src="./app/components/equations.js" defer></script>
     <script src="./app/components/startApp.js" defer></script>
     <script src="./app/components/status.js" defer></script>
+    <script src="./app/components/chart.js" defer></script>
 
     <script type="text/javascript" src="app/mocks/example_raw.json"></script>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
-    <script src="./app/components/chart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
   <body onload="startApp()">
 
@@ -41,7 +41,7 @@
     <div class="tab1-content" id="tab1">
       <div class="container1">
         <div class="chart-container">
-            <div id='chart'></div>
+          <canvas id="chart" width="400" height="400"></canvas>
         </div>
         <div class="data-sensor-container">
           <div class="status-container">
