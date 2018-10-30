@@ -58,14 +58,14 @@ function calculateValuesOfSimulation(){
     var cph, cpc, auxQc;
     var tpd;
     var hpd;
+    var tp;
     var tc1 = document.getElementById("tc1").value;
     var tc2 = document.getElementById("tc2").value;
     var mc = document.getElementById("mc").value;
     var th1 = document.getElementById("th1").value;
 
-    // var hotWaterTemperature = document.getElementById('finalHotWaterTemperature');
     mediaTc = ((parseFloat(tc1) + parseFloat(tc2))/2); //Temperatura média da agua fria
-    mediaTh = 52; //Temperatura média da agua quente
+    mediaTh = 54.5386; //Temperatura média da agua quente
     cpc = celsiusToKelvin(mediaTc);
     cpc = readTableTPSW(cpc);
     cph = celsiusToKelvin(mediaTh); //Temperatura em Kelvin
@@ -76,13 +76,14 @@ function calculateValuesOfSimulation(){
     temp = ((qc/(mh*cph)));
     th2 = th1 - temp;
     var arredondado = parseFloat(th2.toFixed(4));
-    // hotWaterTemperature.style.display = 'block';
     document.getElementById("initialTemperature").innerHTML = th1;
     document.getElementById("th2").innerHTML = arredondado;
     tpd = tubesPressureDrop();
     hpd = hullPressureDrop(tc1,tc2,th1,th2);
     document.getElementById("tubePressure").innerHTML = tpd.toFixed(6);
     document.getElementById("hullPressure").innerHTML = hpd.toFixed(6);
+    tp = thermalPerformance(tc1,tc2,th1,th2);
+    document.getElementById("thermalPerformance").innerHTML = tp.toFixed(6);
 }
 
 function tubesPressureDrop(){
@@ -159,4 +160,14 @@ function hullPressureDrop(tc1,tc2,th1,th2){
       Phi aparenta estar ok.
     */
     return Dps;
+}
+
+function thermalPerformance(tc1,tc2,th1,th2){
+  var q, uf, a, Dtml;
+  uf = 2266.1767;
+  a = 0.86159;
+  Dtml = ((th1-tc2)-(th2-tc1))/Math.log((th1-tc2)/(th2-tc1));
+  q = uf*a*Dtml;
+
+  return q;
 }
