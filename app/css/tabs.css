@@ -51,9 +51,12 @@
 }
 
 .submit-title {
-  margin-left: 500%;
-  /* 230px; */
-  padding: 20% 70%;
+  width: 15%;
+  /* height: 6%; */
+  position: absolute;
+  text-align: center;
+  left: 37%;
+  padding: 10px 15px;
   border-radius: 5px;
   border: 2px solid #fd5f54;
 }

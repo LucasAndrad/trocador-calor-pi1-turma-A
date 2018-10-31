@@ -78,15 +78,15 @@ body{
   height: 8%;
   position: absolute;
   left: 15%;
-  top: 20%;
+  /* top: 20%; */
 }
+
 
 #termometroVermelho{
   width:7%;
   height: 8%;
   position: absolute;
   left: 15%;
-  top: 35%;
 }
 
 #pressaoTubo{
@@ -94,7 +94,6 @@ body{
   height: 8%;
   position: absolute;
   left: 15%;
-  top:53%;
 }
 
 #pressaoCasco{
@@ -102,7 +101,6 @@ body{
   height: 8%;
   position: absolute;
   left: 15%;
-  top:69%;
 }
 
 #desempenhoTermico{
@@ -110,7 +108,6 @@ body{
   height: 8%;
   position: absolute;
   left: 15%;
-  top:86%;
 }
 
 #stop-sensors-button:hover{
