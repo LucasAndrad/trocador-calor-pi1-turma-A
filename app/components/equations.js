@@ -1,14 +1,6 @@
 
 function Interpolizer(a,b,c,d,e){
-    // var a, b, c, d, e;
-    // a = 22; // A é limite inferior
-    // b = 27; //B é limite superior
-    // c =  4.179; //C é
-    // d = 4.181; //D é
-    // e = 25; //E é o que quer saber (Entrada)
-
     x = d + (((e-a) * (c-d)) / (b-a))
-    // console.log("Interpolação = " + x);
     return x;
 }
 
@@ -24,7 +16,6 @@ function readTableTPSW(cpc){
     var posterior;
     var temperaturePrevious;
     var temperaturePosterior;
-    var aux;
     for(i = 0; i < tableOfTPSW.length; i++){
         if(cpc == tableOfTPSW[i].temperature){
             cph = tableOfTPSW[i].cpf;
@@ -64,20 +55,20 @@ function calculateValuesOfSimulation(){
     var mc = document.getElementById("mc").value;
     var th1 = document.getElementById("th1").value;
 
-    mediaTc = ((parseFloat(tc1) + parseFloat(tc2))/2); //Temperatura média da agua fria
-    mediaTh = 54.5386; //Temperatura média da agua quente
-    cpc = celsiusToKelvin(mediaTc);
+    arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2))/2); //Temperatura média da agua fria
+    arithmeticMeanTh = 54.5386; //Temperatura média da agua quente
+    cpc = celsiusToKelvin(arithmeticMeanTc);
     cpc = readTableTPSW(cpc);
-    cph = celsiusToKelvin(mediaTh); //Temperatura em Kelvin
+    cph = celsiusToKelvin(arithmeticMeanTh); //Temperatura em Kelvin
     cph = readTableTPSW(cph);
 
     qc = heatTransferRate(mc,tc2,tc1,cpc);
     console.log("cph = " + cph);
     temp = ((qc/(mh*cph)));
     th2 = th1 - temp;
-    var arredondado = parseFloat(th2.toFixed(4));
+    var roundedTh2 = parseFloat(th2.toFixed(4));
     document.getElementById("initialTemperature").innerHTML = th1;
-    document.getElementById("th2").innerHTML = arredondado;
+    document.getElementById("th2").innerHTML = roundedTh2;
     tpd = tubesPressureDrop();
     hpd = hullPressureDrop(tc1,tc2,th1,th2);
     document.getElementById("tubePressure").innerHTML = tpd.toFixed(6);
@@ -112,7 +103,6 @@ function readTableTPSIWS(tw){
     var posterior;
     var temperaturePrevious;
     var temperaturePosterior;
-    var aux;
 
     for(i = 0; i < tableTPSIWS.length; i++){
         if(tw == tableTPSIWS[i].temperature){
@@ -128,13 +118,12 @@ function readTableTPSIWS(tw){
             console.log("posterior = " + posterior);
             return uw;
         }
-        // console.log(tableOfTPSW[i].temperature, TableTPSIWS[i].cpf);
     }
 }
 function hullPressureDrop(tc1,tc2,th1,th2){
     var f = 0.0112; //coeficiente de atrito
     var Gsh = 8.1590; //velocidade mássica aparente
-    var nc = 5;
+    var nc = 5; //número de chicanas
     var Ds =  0.11349; //diâmetro externo do casco
     var ro = 974.8; //Em kg/m^3
     var De =  0.0386; //Diâmetro equivalente aparente
