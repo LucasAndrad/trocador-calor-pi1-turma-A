@@ -97,9 +97,13 @@
       <p style="text-align:center">Insira os dados que deseja simular nos campos abaixo</p><br>
         <form id="form1">
           <div style="margin-left: 10%">Tc1 (°C):   <input type="number" id="tc1" min="0" max="100" value="25" style="width:20%;  height: 4%; position: absolute; left: 37%;"><img id="infoButton" src="./app/images/button.png" title="Tc1: temperatura da água fria na entrada"/><br><br></div>
+          <br>
           <div style="margin-left: 10%">Tc2 (°C):   <input type="number" id="tc2" min="0" max="100" value="35" style="width:20%;  height: 4%; position: absolute; left: 37%;"><img id="infoButton" src="./app/images/button.png" title="Tc2: temperatura da água quente na saída"/><br><br></div>
+          <br>
           <div style="margin-left: 10%">Th1 (°C):   <input type="number" id="th1" min="0" max="100" value="75" style="width:20%;  height: 4%; position: absolute; left: 37%;"><img id="infoButton" src="./app/images/button.png" title="Th1: temperatura da água quente na entrada"/><br><br></div>
+          <br>
           <div style="margin-left: 10%">mc (kg/s):  <input type="number" id="mc" min="0" max="3" value="0.653" style="width:20%;  height: 4%; position: absolute; left: 37%;"><img id="infoButton" src="./app/images/button.png" title="Vazão da água fria"/><br><br></div>
+          <br>
           <div class="submit" id="submit">
               <div class="tab t2">
                 <div class="submit-title" onclick="calculateValuesOfSimulation()" id="tab2-title">Enviar</div>
@@ -113,15 +117,19 @@
           <img id="termometroAzul"src="./app/images/icons8-termômetro-frio.png"/><p style="text-align:center; position: absolute; left: 37%;">Temperatura final da água quente:
           <b><span id="th2">  </b></span> °C </p><br><br>
           <p></p>
+          <br><br>
           <img id="termometroVermelho" src="./app/images/icons8-termômetro-quente.png"/><p style="text-align:center; position: absolute; left: 37%;">Temperatura inicial da água quente:
           <b><span id="initialTemperature"> </b> </span> °C </p><br><br>
           <p></p>
+          <br><br>
           <img id="pressaoTubo" src="./app/images/icons8-pressão-50.png"/><p style="text-align:center; position: absolute; left: 37%;">Queda de pressão nos tubos:
           <b><span id="tubePressure"> </b> </span> Pa </p><br><br>
           <p></p>
+          <br><br>
           <img id="pressaoCasco" src="./app/images/icons8-pressão-50.png"/><p style="text-align:center; position: absolute; left: 37%;">Queda de pressão no casco:
           <b><span id="hullPressure"> </b></span> Pa </p><br><br>
           <p></p>
+          <br><br>
           <img id="desempenhoTermico" src="./app/images/icons8-umidade-50.png"/><p style="text-align:center; position: absolute; left: 37%;">Desempenho térmico:
           <b><span id="thermalPerformance"> </b></span> °C </p><br><br>
           <p></p>
