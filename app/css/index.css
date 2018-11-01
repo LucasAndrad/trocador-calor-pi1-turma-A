@@ -73,7 +73,7 @@ body{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-#termometroAzul{
+#blueThermometer{
   width:7%;
   height: 8%;
   position: absolute;
@@ -82,28 +82,28 @@ body{
 }
 
 
-#termometroVermelho{
+#redThermometer{
   width:7%;
   height: 8%;
   position: absolute;
   left: 15%;
 }
 
-#pressaoTubo{
+#iconTubePressure{
   width:7%;
   height: 8%;
   position: absolute;
   left: 15%;
 }
 
-#pressaoCasco{
+#iconHullPressure{
   width:7%;
   height: 8%;
   position: absolute;
   left: 15%;
 }
 
-#desempenhoTermico{
+#iconThermalPerformance{
   width:7%;
   height: 8%;
   position: absolute;
