@@ -1,0 +1,8 @@
+.calc-result {
+  width: 95%;
+  margin: 0 auto;
+  height: 160px;
+  margin-top: 3%;
+  box-shadow: 1px 1px 1px 3px #a3a3a3;
+  border-radius: 5px;
+}

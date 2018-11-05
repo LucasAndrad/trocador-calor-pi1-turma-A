@@ -1,118 +1,126 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Trocador de Calor - Monitoramento</title>
-    <link rel="stylesheet" href="./app/css/index.css">
-    <link rel="stylesheet" href="./app/css/tabs.css">
-    <link rel="stylesheet" href="./app/css/chart.css">
-    <link rel="stylesheet" href="./app/css/sensors.css">
-    <link rel="stylesheet" href="./app/css/status.css">
 
-    <script src="./app/components/tabs.js" defer></script>
-    <script src="./app/components/temperatureTable.js" defer></script>
-    <script src="./app/components/sensorsData.js" defer></script>
-    <script src="./app/components/equations.js" defer></script>
-    <script src="./app/components/startApp.js" defer></script>
-    <script src="./app/components/status.js" defer></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Trocador de Calor - Monitoramento</title>
+  <link rel="stylesheet" href="./app/css/index.css">
+  <link rel="stylesheet" href="./app/css/tabs.css">
+  <link rel="stylesheet" href="./app/css/chart.css">
+  <link rel="stylesheet" href="./app/css/sensors.css">
+  <link rel="stylesheet" href="./app/css/status.css">
+  <link rel="stylesheet" href="./app/css/calc.css">
 
-    <script type="text/javascript" src="app/mocks/example_raw.json"></script>
+  <script src="./app/components/tabs.js" defer></script>
+  <script src="./app/components/temperatureTable.js" defer></script>
+  <script src="./app/components/sensorsData.js" defer></script>
+  <script src="./app/components/equations.js" defer></script>
+  <script src="./app/components/startApp.js" defer></script>
+  <script src="./app/components/status.js" defer></script>
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
-    <script src="./app/components/chart.js"></script>
-  </head>
-  <body onload="startApp()">
+  <script type="text/javascript" src="app/mocks/example_raw.json"></script>
 
-    <div class="tabs" id="tabs">
-      <div class="tab t1">
-        <div class="tab-title" onclick="toggleTabs(1)" id="tab1-title">Trocador de Calor</div>
-      </div>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="./app/components/chart.js"></script>
+</head>
 
-      <div class="tab t2">
-        <div class="tab-title" onclick="toggleTabs(2)" id="tab2-title">Simulador</div>
-      </div>
-          <div class="tab t3">
-        <div class="tab-title" onclick="toggleTabs(3)" id="tab3-title">Gráficos</div>
-      </div>
+<body onload="startApp()">
 
+  <div class="tabs" id="tabs">
+    <div class="tab t1">
+      <div class="tab-title" onclick="toggleTabs(1)" id="tab1-title">Trocador de Calor</div>
     </div>
 
-    <div class="tab1-content" id="tab1">
-      <div class="container1">
-        <div class="chart-container">
-            <div id='chart'></div>
+    <div class="tab t2">
+      <div class="tab-title" onclick="toggleTabs(2)" id="tab2-title">Simulador</div>
+    </div>
+    <div class="tab t3">
+      <div class="tab-title" onclick="toggleTabs(3)" id="tab3-title">Gráficos</div>
+    </div>
+
+  </div>
+
+  <div class="tab1-content" id="tab1">
+    <div class="container1">
+      <div class="chart-container">
+        <div id='chart'></div>
+
+        <div class="calc-result">
+
         </div>
-        <div class="data-sensor-container">
-          <div class="status-container">
-            <div id="sta">STATUS: OK</div>
+      </div>
+      <div class="data-sensor-container">
+        <div class="status-container">
+          <div id="sta">STATUS: OK</div>
+        </div>
+        <div class="heat-exchanger-container" style="overflow:auto">
+          <div class="left-sensors">
+            <div class="first-sensor-element">
+              <span class="temperature-dot"><text id="s-temperature1"></text></span>
+              <span class="sensor-dot"><text>1</text></span>
+            </div>
+            <div class="second-sensor-element">
+              <span class="temperature-dot"><text id="s-temperature2"></text></span>
+              <span class="sensor-dot"><text>2</text></span>
+            </div>
           </div>
-          <div class="heat-exchanger-container" style="overflow:auto">
-            <div class="left-sensors">
-              <div class="first-sensor-element">
-                <span class="temperature-dot"><text id="s-temperature1"></text></span>
-                <span class="sensor-dot"><text>1</text></span>
-              </div>
-              <div class="second-sensor-element">
-                <span class="temperature-dot"><text id="s-temperature2"></text></span>
-                <span class="sensor-dot"><text>2</text></span>
-              </div>
-            </div>
 
-            <div class="main-sensor">
-              <img src="./app/images/heat_exchanger.png">
-              <div class="sensors-button-container">
-                <div class="sensors-button" onclick="stopSensorsDatas()" id="stop-sensors-button">Stop</div>
-                <div class="sensors-button" onclick="getSensorsDatas()" id="start-sensors-button">Start</div>
-              </div>
+          <div class="main-sensor">
+            <img src="./app/images/heat_exchanger.png">
+            <div class="sensors-button-container">
+              <div class="sensors-button" onclick="stopSensorsDatas()" id="stop-sensors-button">Stop</div>
+              <div class="sensors-button" onclick="getSensorsDatas()" id="start-sensors-button">Start</div>
             </div>
+          </div>
 
-            <div class="right-sensors">
-              <div class="first-sensor-element">
-                <span class="temperature-dot"><text id="s-temperature3"></text></span>
-                <span class="sensor-dot"><text>3</text></span>
-              </div>
-              <div class="second-sensor-element">
-                <span class="temperature-dot"><text id="s-temperature4"></text></span>
-                <span class="sensor-dot"><text>4</text></span>
-              </div>
-              <div class="second-sensor-element">
-                <span class="temperature-dot"><text id="s-temperature5"></text></span>
-                <span class="sensor-dot"><text>5</text></span>
-              </div>
+          <div class="right-sensors">
+            <div class="first-sensor-element">
+              <span class="temperature-dot"><text id="s-temperature3"></text></span>
+              <span class="sensor-dot"><text>3</text></span>
+            </div>
+            <div class="second-sensor-element">
+              <span class="temperature-dot"><text id="s-temperature4"></text></span>
+              <span class="sensor-dot"><text>4</text></span>
+            </div>
+            <div class="second-sensor-element">
+              <span class="temperature-dot"><text id="s-temperature5"></text></span>
+              <span class="sensor-dot"><text>5</text></span>
             </div>
           </div>
         </div>
-
       </div>
 
     </div>
 
-    <div class="tab2-content" id="tab2">
-      <h1>Simulador</h1>
-      <form id="form1">
-        Tc1 (°C):   <input type="number" id="tc1" min="0" max="100" value="25" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
-        Tc2 (°C):   <input type="number" id="tc2" min="0" max="100" value="35" style="width:100px;  position: absolute; left: 105px; right: 0px; "><br><br>
-        Th1 (°C):   <input type="number" id="th1" min="0" max="100" value="75" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
-        mc (kg/s):  <input type="number" id="mc" min="0" max="3" value="0.653" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
-        mh (kg/s):  <input type="number" id="mh" min="0" max="3" value="0.139" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
-        cph (kj/kg K):      <input type="number" id="cph" min="0" max="10" value="4.190" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
-        cpc (kj/kg K):      <input type="number" id="cpc" min="0" max="10" value="4.178" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
-        <div class="submit" id="submit">
-            <div class="tab t2">
-              <div class="submit-title" onclick="finalHotWaterTemperature()" id="tab2-title">Enviar</div>
-            </div>
-          </div>
-          <div class="finalTemperature" id="finalHotWaterTemperature">
-            Temperatura final da água quente:
-            <span id="th2">  </span> °C <br><br>
-            Temperatura inicial da água quente:
-            <span id="initialTemperature"> </span> °C <br>
-          </div>
-      </form>
-    </div>
-      <div class="tab3-content" id="tab3">
-         <h1>Gráficos</h1>
+  </div>
+
+  <div class="tab2-content" id="tab2">
+    <h1>Simulador</h1>
+    <form id="form1">
+      Tc1 (°C): <input type="number" id="tc1" min="0" max="100" value="25" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
+      Tc2 (°C): <input type="number" id="tc2" min="0" max="100" value="35" style="width:100px;  position: absolute; left: 105px; right: 0px; "><br><br>
+      Th1 (°C): <input type="number" id="th1" min="0" max="100" value="75" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
+      mc (kg/s): <input type="number" id="mc" min="0" max="3" value="0.653" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
+      mh (kg/s): <input type="number" id="mh" min="0" max="3" value="0.139" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
+      cph (kj/kg K): <input type="number" id="cph" min="0" max="10" value="4.190" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
+      cpc (kj/kg K): <input type="number" id="cpc" min="0" max="10" value="4.178" style="width:100px;  position: absolute; left: 105px; right: 0px;"><br><br>
+      <div class="submit" id="submit">
+        <div class="tab t2">
+          <div class="submit-title" onclick="finalHotWaterTemperature()" id="tab2-title">Enviar</div>
+        </div>
       </div>
-  </body>
+      <div class="finalTemperature" id="finalHotWaterTemperature">
+        Temperatura final da água quente:
+        <span id="th2"> </span> °C <br><br>
+        Temperatura inicial da água quente:
+        <span id="initialTemperature"> </span> °C <br>
+      </div>
+    </form>
+  </div>
+  <div class="tab3-content" id="tab3">
+    <h1>Gráficos</h1>
+  </div>
+</body>
+
 </html>
