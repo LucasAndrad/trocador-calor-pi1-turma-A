@@ -40,7 +40,7 @@
   display: none;
 }
 .tab3-content{
-    display: none;
+    display: inherit;
 }
 .container1 {
   display: flex;
