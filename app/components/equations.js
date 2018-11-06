@@ -65,6 +65,7 @@ function calculateValuesOfSimulation(){
 
     qc = heatTransferRate(mc,tc2,tc1,cpc);
     console.log("cph = " + cph);
+    console.log("cpc = " + cpc);
     temp = ((qc/(mh*cph)));
     th2 = th1 - temp;
     var roundedTh2 = parseFloat(th2.toFixed(4));
@@ -130,9 +131,9 @@ function hullPressureDrop(tc1,tc2,th1,th2){
     var Ds =  0.11234929; //diâmetro externo do casco
     var ro = 974.8; //Em kg/m^3
     var De =  0.036056; //Diâmetro equivalente aparente
-    var phi; //Tabela B-2
-    var ub = 0.00085;
-    var uw; //Tabela B-2
+    var phi; //Tabela A9
+    var ub = 0.0005083; //Tabela A9
+    var uw; //Tabela A9
     var twCelsius;
     var auxUw;
 
@@ -140,12 +141,12 @@ function hullPressureDrop(tc1,tc2,th1,th2){
     console.log("twCelsius = "+twCelsius);
     tw = celsiusToKelvin(twCelsius);
     console.log("tw = "+tw);
-    auxUw = readTableTPSIWS(tw);
-    uw = auxUw * Math.pow(10,(-4));
+    auxUw = readTableTPSIWS(twCelsius);
+    uw = auxUw * Math.pow(10,(-3));
     console.log("uw = " + uw);
     phi = Math.pow((ub/uw),0.14);
     console.log("phi = "+phi);
-    Dps = (f*Math.pow(Gsh,2) * (nc-1)*Ds)/(2*ro*De*phi);
+    Dps = ((f*Math.pow(Gsh,2)) * (parseFloat(nc)- parseFloat(1))*Ds)/(2*ro*De*phi);
     console.log("Dps = "+Dps);
     /*Provavelmente algum valor que ela passou está errado, porque
       está dando 0,002394758 no software e 0,006863 no memorial de calculos.

@@ -45,5 +45,7 @@ tableTPSIWS = [
     {"temperature":320,"mi":0.078},
     {"temperature":340,"mi":0.070},
     {"temperature":360,"mi":0.060},
-    {"temperature":374.14,"mi":0.043},
+    {"temperature":374.14,"mi":0.043}
+];
+
     
