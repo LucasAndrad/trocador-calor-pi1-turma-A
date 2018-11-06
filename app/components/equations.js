@@ -54,9 +54,10 @@ function calculateValuesOfSimulation(){
     var tc2 = document.getElementById("tc2").value;
     var mc = document.getElementById("mc").value;
     var th1 = document.getElementById("th1").value;
+    var th2Initial = document.getElementById("th2Initial").value;
 
     arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2))/2); //Temperatura média da agua fria
-    arithmeticMeanTh = 54.5386; //Temperatura média da agua quente
+    arithmeticMeanTh = ((parseFloat(th1) + parseFloat(th2Initial))/2); //Temperatura média da agua quente
     cpc = celsiusToKelvin(arithmeticMeanTc);
     cpc = readTableTPSW(cpc);
     cph = celsiusToKelvin(arithmeticMeanTh); //Temperatura em Kelvin
@@ -78,17 +79,19 @@ function calculateValuesOfSimulation(){
 }
 
 function tubesPressureDrop(){
-    var f = 0.0112; //coeficiente de atrito
+    var f = 0.01644; //coeficiente de atrito
     var Lc = 0.98; //Comprimento do tubo de cobre em metros
     var np = 1; //Número de passes
-    var di = 0.00757; //Diâmetros interno dos tubos
+    var di = 0.00755; //Diâmetros interno dos tubos
     var ro = 974.8; //Em kg/m^3
     var Um; //Velocidade média dentro dos tubos
     var mh = 0.139; //Vazão da água fria
     var atp;
-    var nt = 28; //Número de tubos de cobre
+    var nt = 27; //Número de tubos de cobre
 
-    atp = ((Math.PI*Math.pow(di,2))/4) * (nt/2);
+    atp = ((Math.PI*Math.pow(di,2))/4) * (nt/1);
+    // atp = ((3.14*Math.pow(di,2))/4) * (nt/1);
+
     Um = mh/(ro*atp);
     Dpt = (parseFloat((4*f)*((Lc*np)/di)) + parseFloat(4*np)) * ro*((Math.pow(Um,2)/2));
     console.log("atp = " + atp);
@@ -121,12 +124,12 @@ function readTableTPSIWS(tw){
     }
 }
 function hullPressureDrop(tc1,tc2,th1,th2){
-    var f = 0.0112; //coeficiente de atrito
-    var Gsh = 8.1590; //velocidade mássica aparente
+    var f = 0.01644; //coeficiente de atrito
+    var Gsh = 8.0929; //velocidade mássica aparente
     var nc = 5; //número de chicanas
-    var Ds =  0.11349; //diâmetro externo do casco
+    var Ds =  0.11234929; //diâmetro externo do casco
     var ro = 974.8; //Em kg/m^3
-    var De =  0.0386; //Diâmetro equivalente aparente
+    var De =  0.036056; //Diâmetro equivalente aparente
     var phi; //Tabela B-2
     var ub = 0.00085;
     var uw; //Tabela B-2
