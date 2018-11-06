@@ -163,3 +163,9 @@ function thermalPerformance(tc1,tc2,th1,th2){
 
   return q;
 }
+
+function convertLminToKgs(flow){
+  var fKgs;
+  fKgs = 0.017 * flow;
+  return fKgs;
+}
