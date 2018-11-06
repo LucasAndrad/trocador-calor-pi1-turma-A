@@ -92,35 +92,13 @@ function finalHotWaterTemperature(tc1, tc2, th1, th2Initial, mh, mc){
     return roundedTh2;
 }
 
-function calculateValuesOfSimulation(){
-    var tpd;
-    var hpd;
-    var tp;
-    var fhwt;
-    var tc1 = document.getElementById("tc1").value;
-    var tc2 = document.getElementById("tc2").value;
-    var mc = document.getElementById("mc").value;
-    var mh = document.getElementById("mh").value;
-    var th1 = document.getElementById("th1").value;
-    var th2Initial = document.getElementById("th2Initial").value;
-
-    fhwt = finalHotWaterTemperature(tc1, tc2, th1, th2Initial, mh, mc);
-    tpd = tubesPressureDrop();
-    hpd = hullPressureDrop(tc1,tc2,th1,th2Initial);
-    document.getElementById("tubePressure").innerHTML = tpd.toFixed(6);
-    document.getElementById("hullPressure").innerHTML = hpd.toFixed(6);
-    tp = thermalPerformance(tc1,tc2,th1,th2Initial);
-    document.getElementById("thermalPerformance").innerHTML = tp.toFixed(6);
-}
-
-function tubesPressureDrop(){
+function tubesPressureDrop(mh){
     var f = 0.01644; //coeficiente de atrito
     var Lc = 0.98; //Comprimento do tubo de cobre em metros
     var np = 1; //Número de passes
     var di = 0.00755; //Diâmetros interno dos tubos
     var ro = 974.8; //Em kg/m^3
     var Um; //Velocidade média dentro dos tubos
-    var mh = document.getElementById("mh").value;; //Vazão da água fria
     var atp;
     var nt = 27; //Número de tubos de cobre
 
@@ -171,3 +149,19 @@ function thermalPerformance(tc1,tc2,th1,th2){
   return q;
 }
 
+function calculateValuesOfSimulation(){
+    var tc1 = document.getElementById("tc1").value;
+    var tc2 = document.getElementById("tc2").value;
+    var mc = document.getElementById("mc").value;
+    var mh = document.getElementById("mh").value;
+    var th1 = document.getElementById("th1").value;
+    var th2Initial = document.getElementById("th2Initial").value;
+
+    fhwt = finalHotWaterTemperature(tc1, tc2, th1, th2Initial, mh, mc);
+    tpd = tubesPressureDrop(mh);
+    hpd = hullPressureDrop(tc1,tc2,th1,th2Initial);
+    document.getElementById("tubePressure").innerHTML = tpd.toFixed(6);
+    document.getElementById("hullPressure").innerHTML = hpd.toFixed(6);
+    tp = thermalPerformance(tc1,tc2,th1,th2Initial);
+    document.getElementById("thermalPerformance").innerHTML = tp.toFixed(6);
+}
