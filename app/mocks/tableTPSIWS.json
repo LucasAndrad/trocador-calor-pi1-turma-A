@@ -1,0 +1,51 @@
+tableTPSIWS = [
+    {"temperature":0.01,"mi": 1.792},
+    {"temperature":5,"mi":1.519},
+    {"temperature":10,"mi":1.307},
+    {"temperature":15,"mi":1.138},
+    {"temperature":20,"mi":1.002},
+
+    {"temperature":25,"mi":0.891},
+    {"temperature":30,"mi":0.798},
+    {"temperature":35,"mi":0.720},
+    {"temperature":40,"mi":0.653},
+    {"temperature":45,"mi":0.596},
+
+    {"temperature":50,"mi":0.547},
+    {"temperature":55,"mi":0.504},
+    {"temperature":60,"mi":0.467},
+    {"temperature":65,"mi":0.433},
+    {"temperature":70,"mi":0.404},
+
+    {"temperature":75,"mi":0.378},
+    {"temperature":80,"mi":0.355},
+    {"temperature":85,"mi":0.333},
+    {"temperature":90,"mi":0.315},
+    {"temperature":95,"mi":0.297},
+
+    {"temperature":100,"mi":0.282},
+    {"temperature":110,"mi":0.255},
+    {"temperature":120,"mi":0.232},
+    {"temperature":130,"mi":0.213},
+    {"temperature":140,"mi":0.197},
+
+    {"temperature":150,"mi":0.183},
+    {"temperature":160,"mi":0.170},
+    {"temperature":170,"mi":0.160},
+    {"temperature":180,"mi":0.150},
+    {"temperature":190,"mi":0.142},
+
+    {"temperature":200,"mi":0.134},
+    {"temperature":220,"mi":0.122},
+    {"temperature":240,"mi":0.111},
+    {"temperature":260,"mi":0.102},
+    {"temperature":280,"mi":0.094},
+
+    {"temperature":300,"mi":0.086},
+    {"temperature":320,"mi":0.078},
+    {"temperature":340,"mi":0.070},
+    {"temperature":360,"mi":0.060},
+    {"temperature":374.14,"mi":0.043}
+];
+
+    

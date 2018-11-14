@@ -6,7 +6,7 @@ const {
 var SerialPort = require('serialport');
 var Readline = SerialPort.parsers.Readline
 // '/dev/ttyACM0' is the port for arduino
-var path = '/dev/ttyACM0' // '/tmp/ttyV0' for data simulation
+var path = '/tmp/ttyV0' // '/tmp/ttyV0' for data simulation
 var port = new SerialPort(path, {
   autoOpen: false,
   baudRate: 9600

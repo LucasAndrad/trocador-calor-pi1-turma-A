@@ -1,0 +1,68 @@
+tableOfTPSW = [
+    {"temperature":273.15,"cpf":4.217},
+    {"temperature":275,"cpf":4.211},
+    {"temperature":280,"cpf":4.198},
+    {"temperature":285,"cpf":4.189},
+    {"temperature":290,"cpf":4.184},
+    {"temperature":290,"cpf":4.184},
+
+    {"temperature":295,"cpf":4.181},
+    {"temperature":300,"cpf":4.179},
+    {"temperature":305,"cpf":4.178},
+    {"temperature":310,"cpf":4.178},
+    {"temperature":315,"cpf":4.179},
+
+    {"temperature":320,"cpf":4.180},
+    {"temperature":325,"cpf":4.182},
+    {"temperature":330,"cpf":4.184},
+    {"temperature":335,"cpf":4.186},
+    {"temperature":340,"cpf":4.188},
+
+    {"temperature":345,"cpf":4.191},
+    {"temperature":350,"cpf":4.195},
+    {"temperature":355,"cpf":4.199},
+    {"temperature":360,"cpf":4.203},
+    {"temperature":365,"cpf":4.209},
+
+    {"temperature":370,"cpf":4.214},
+    {"temperature":373.15,"cpf":4.217},
+    {"temperature":375,"cpf":4.220},
+    {"temperature":380,"cpf":4.226},
+    {"temperature":385,"cpf":4.232},
+
+    {"temperature":390,"cpf":4.239},
+    {"temperature":400,"cpf":4.256},
+    {"temperature":410,"cpf":4.278},
+    {"temperature":420,"cpf":4.302},
+    {"temperature":430,"cpf":4.331},
+
+    {"temperature":440,"cpf":4.36},
+    {"temperature":450,"cpf":4.40},
+    {"temperature":460,"cpf":4.44},
+    {"temperature":470,"cpf":4.48},
+    {"temperature":480,"cpf":4.53},
+
+    {"temperature":490,"cpf":4.59},
+    {"temperature":500,"cpf":4.66},
+    {"temperature":510,"cpf":4.74},
+    {"temperature":520,"cpf":4.84},
+    {"temperature":530,"cpf":4.95},
+
+    {"temperature":540,"cpf":5.08},
+    {"temperature":550,"cpf":5.24},
+    {"temperature":560,"cpf":5.43},
+    {"temperature":570,"cpf":5.68},
+    {"temperature":580,"cpf":6.00},
+
+    {"temperature":590,"cpf":6.41},
+    {"temperature":600,"cpf":7.00},
+    {"temperature":610,"cpf":7.85},
+    {"temperature":620,"cpf":9.35},
+    {"temperature":625,"cpf":10.6},
+
+    {"temperature":630,"cpf":12.6},
+    {"temperature":635,"cpf":16.4},
+    {"temperature":640,"cpf":26},
+    {"temperature":645,"cpf":90},
+    {"temperature":647.3,"cpf":"1/0"}
+  ];

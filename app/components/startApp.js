@@ -1,6 +1,4 @@
 function startApp(){
-  buildTable();
-
   // Default values for sensors temperatures
   document.getElementById("s-temperature1").innerHTML = 0;
   document.getElementById("s-temperature2").innerHTML = 0;
