@@ -81,7 +81,8 @@ async function getSensorsDatas() {
       if (lastData == "D7") {
         document.getElementById("s-temperature1").innerHTML = data;
         nextSensorData[0] = parsed_data
-        updateChart(nextSensorData)
+        updateChart(nextSensorData);
+        updateBasicInfo(nextSensorData);
       } else if (lastData == "F5") {
         document.getElementById("s-temperature2").innerHTML = data;
         nextSensorData[1] = parsed_data
