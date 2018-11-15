@@ -12,3 +12,13 @@
   box-shadow: 1px 1px 1px 1px #c4c4c4;
   border-radius: 5px;
 }
+
+.a {
+  border-left: 5px solid #0d9e19;
+}
+.b {
+  border-left: 5px solid #d5d82c;
+}
+.c {
+  border-left: 5px solid #d32e05;
+}
