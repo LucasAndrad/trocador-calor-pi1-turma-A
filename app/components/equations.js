@@ -123,8 +123,8 @@ function finalHotWaterTemperature (tc1, tc2, th1, th2Initial, mh, mc) {
   return roundedTh2;
 }
 
-function tubesPressureDrop (mh) {
-  var f = 0.01644; //coeficiente de atrito
+function tubesPressureDrop (tc1, tc2, mh) {
+  var f; //coeficiente de atrito
   var Lc = 0.98; //Comprimento do tubo de cobre em metros
   var np = 1; //Número de passes
   var di = 0.00757; //Diâmetros interno dos tubos
@@ -132,7 +132,12 @@ function tubesPressureDrop (mh) {
   var Um; //Velocidade média dentro dos tubos
   var atp;
   var nt = 27; //Número de tubos de cobre
-
+ 
+  arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2))/2); //Temperatura média da agua fria
+  mi = readTableA9(arithmeticMeanTc);
+  Re = (4*mh)/((nt/np)*Math.PI*mi*di)* 1000;
+  f = Math.pow((1.58 * Math.log(Re) - 3.28), (-2));
+  console.log("f = ", f);
   atp = ((Math.PI * Math.pow(di, 2)) / 4) * (nt / 1);
 
   Um = mh / (ro * atp);
@@ -143,9 +148,10 @@ function tubesPressureDrop (mh) {
   return Dpt;
 }
 
-// function frictionFactor(){
+// function frictionFactor(tc1, tc2, mh){
 //     var f;
 //     var Re;
+//     var di = 0.00757;
 
 //     arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2))/2); //Temperatura média da agua fria
 //     mi = readTableA9(arithmeticMeanTc);
@@ -240,9 +246,17 @@ function calculateValuesOfSimulation () {
   var mh = document.getElementById("mh").value;
   var th1 = document.getElementById("th1").value;
   var th2Initial = document.getElementById("th2Initial").value;
+  console.log("TC1 = "+ tc1);
+  console.log("TC2 = "+ tc2);
+  console.log("Th1 = "+ th1);
+  console.log("Th2 = "+ th2Initial);
+  console.log("mc = "+ mc);
+  console.log("mh = "+ mh);
+
+
 
   fhwt = finalHotWaterTemperature(tc1, tc2, th1, th2Initial, mh, mc);
-  tpd = tubesPressureDrop(mh);
+  tpd = tubesPressureDrop(tc1, tc2, mh);
   hpd = hullPressureDrop(tc1, tc2, th1, th2Initial, mh);
   document.getElementById("tubePressure").innerHTML = tpd.toFixed(6);
   document.getElementById("hullPressure").innerHTML = hpd.toFixed(6);
