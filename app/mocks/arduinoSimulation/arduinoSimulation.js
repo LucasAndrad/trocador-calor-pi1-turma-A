@@ -11,7 +11,7 @@ async function arduino_simulation(){
         await sleep(250);
         port.write('28 AA AA 3E 13 13 2 F5 \n');
         await sleep(50);
-        temperature = generateRandomNumber(20 , 25);
+        temperature = generateRandomNumber(65 , 78);
         port.write(temperature);
         await sleep(50);
         flux = generateRandomNumber(1 , 5);
@@ -47,7 +47,7 @@ async function arduino_simulation(){
       case 3:
         await sleep(250);
         port.write('28 D C7 84 1B 13 1 9C \n');
-        temperature = generateRandomNumber(58 , 62);
+        temperature = generateRandomNumber(31 , 38);
         port.write(temperature);
         await sleep(50);
         flux = generateRandomNumber(1 , 5);
@@ -59,7 +59,7 @@ async function arduino_simulation(){
       case 4:
         await sleep(250);
         port.write('28 2F 99 97 1B 13 1 C3 \n');
-        temperature = generateRandomNumber(60 , 65);
+        temperature = generateRandomNumber(25 , 30);
         port.write(temperature);
         await sleep(50);
         flux = generateRandomNumber(1 , 5);
