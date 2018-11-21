@@ -1,7 +1,7 @@
 function updateBasicInfo(data) {
   var mhBasicInfo = 0.139;
   var th2InitialBasicInfo = 31.07567262
-  tpdBasicInfo = tubesPressureDrop(mhBasicInfo);
+  tpdBasicInfo = tubesPressureDrop(data[0], data[3], mhBasicInfo);
   document.getElementById("basicInfoTubesPressure").innerHTML = tpdBasicInfo.toFixed(4);
 
   // Perguntar quais são os repectivos sensores
