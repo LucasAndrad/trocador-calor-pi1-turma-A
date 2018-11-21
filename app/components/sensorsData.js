@@ -21,7 +21,7 @@ function startButtonHolder() {
   return 0;
 }
 
-var nextSensorData = [0, 0, 0, 0, 0]
+var nextSensorData = [0, 0, 0, 0]
 
 async function getSensorsDatas() {
   port.open(function (err) {
@@ -94,9 +94,6 @@ async function getSensorsDatas() {
         checkStatus(data);
         document.getElementById("s-temperature4").innerHTML = data;
         nextSensorData[3] = parsed_data
-      } else if (lastData == "9E") {
-        document.getElementById("s-temperature5").innerHTML = data;
-        nextSensorData[4] = parsed_data
       }
     }
 
