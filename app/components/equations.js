@@ -31,9 +31,9 @@ function readTableTPSW (cpc) {
       cph = tableOfTPSW[i].cpf;
       return cph;
     } else if (cpc < tableOfTPSW[i].temperature) {
-      temperaturePrevious = tableOfTPSW[i - 1].temperature;
+      temperaturePrevious = i>0 ? tableOfTPSW[i - 1].temperature : 330;
       temperaturePosterior = tableOfTPSW[i + 1].temperature;
-      previous = tableOfTPSW[i - 1].cpf;
+      previous = i>0 ? tableOfTPSW[i - 1].cpf : 4.184;
       posterior = tableOfTPSW[i].cpf;
       cph = Interpolizer(temperaturePrevious, temperaturePosterior, posterior, previous, cpc);
       return cph;
@@ -53,9 +53,9 @@ function readTableB2 (tw) {
       uw = tableB2[i].mi;
       return uw;
     } else if (tw < tableB2[i].temperature) {
-      temperaturePrevious = tableB2[i - 1].temperature;
+      temperaturePrevious = i>0 ? tableB2[i - 1].temperature : 497.09;
       temperaturePosterior = tableB2[i + 1].temperature;
-      previous = tableB2[i - 1].mi;
+      previous = i>0 ? tableB2[i - 1].mi : 0.1648;
       posterior = tableB2[i].mi;
       uw = Interpolizer(temperaturePrevious, temperaturePosterior, posterior, previous, tw);
       console.log("anterior = " + previous);
@@ -77,9 +77,9 @@ function readTableA9 (arithmeticMeanTh) {
       ub = tableTPSIWS[i].mi;
       return ub;
     } else if (arithmeticMeanTh < tableTPSIWS[i].temperature) {
-      temperaturePrevious = tableTPSIWS[i - 1].temperature;
+      temperaturePrevious = i>0 ? tableTPSIWS[i - 1].temperature : 1;
       temperaturePosterior = tableTPSIWS[i + 1].temperature;
-      previous = tableTPSIWS[i - 1].mi;
+      previous = i>0 ? tableTPSIWS[i - 1].mi : 1;
       posterior = tableTPSIWS[i].mi;
       ub = Interpolizer(temperaturePrevious, temperaturePosterior, posterior, previous, arithmeticMeanTh);
       console.log("anterior = " + previous);
@@ -222,7 +222,6 @@ function hullPressureDrop (tc1, tc2, th1, th2, mh) {
 function thermalPerformance (tc1, tc2, th1, th2) {
   var q, uf, a, Dtml;
   uf = 2266.1767;
-  // a = 0.86159;
   a = 0.786174;
   Dtml = 0;
   Dtml = ((th1 - tc2) - (th2 - tc1)) / Math.log((th1 - tc2) / (th2 - tc1));
