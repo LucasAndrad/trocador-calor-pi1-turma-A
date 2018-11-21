@@ -25,6 +25,7 @@ function readTableTPSW (cpc) {
   var posterior;
   var temperaturePrevious;
   var temperaturePosterior;
+
   for (i = 0; i < tableOfTPSW.length; i++) {
     if (cpc == tableOfTPSW[i].temperature) {
       cph = tableOfTPSW[i].cpf;
@@ -221,7 +222,8 @@ function hullPressureDrop (tc1, tc2, th1, th2, mh) {
 function thermalPerformance (tc1, tc2, th1, th2) {
   var q, uf, a, Dtml;
   uf = 2266.1767;
-  a = 0.86159;
+  // a = 0.86159;
+  a = 0.786174;
   Dtml = 0;
   Dtml = ((th1 - tc2) - (th2 - tc1)) / Math.log((th1 - tc2) / (th2 - tc1));
   q = uf * a * Dtml;
