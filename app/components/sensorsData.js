@@ -13,7 +13,7 @@ var port = new SerialPort(path, {
 });
 
 function stopSensorsDatas() {
-  port.write('CLOSE');
+  port.write('@');
   port.close();
 }
 
@@ -31,6 +31,7 @@ async function getSensorsDatas() {
   });
   // If it starts communication desactivate button
   port.on('open', function (err) {
+    port.write('!');
     document.getElementById('start-sensors-button').setAttribute("onclick", "startButtonHolder()");
   });
 
