@@ -21,7 +21,7 @@ function startButtonHolder() {
   return 0;
 }
 
-var nextSensorData = [0, 0, 0, 0, 0]
+var nextSensorData = [0, 0, 0, 0]
 
 async function getSensorsDatas() {
   port.open(function (err) {
