@@ -21,7 +21,7 @@ function startButtonHolder() {
   return 0;
 }
 
-var nextSensorData = [0, 0, 0, 0]
+var nextSensorData = [0, 0, 0, 0, 0, 0]
 
 async function getSensorsDatas() {
   port.open(function (err) {
@@ -94,12 +94,21 @@ async function getSensorsDatas() {
         checkStatus(data);
         document.getElementById("s-temperature4").innerHTML = data;
         nextSensorData[3] = parsed_data
+      } else if (lastData =="mc"){ //sensor de fluxo frio
+        checkStatus(data);
+        document.getElementById("s-flowMc").innerHTML = data;
+        nextSensorData[4] = parsed_data
+      } else if (lastData == "mh"){ //sensor de fluxo quente
+        checkStatus(data);
+        document.getElementById("s-flowMh").innerHTML = data;
+        nextSensorData[5] = parsed_data
       }
+
     }
 
     // Trying to get last 2 digits of data
-    if (data.length >= 3) {
-      lastData = data[data.length - 3] + data[data.length - 2];
+    if (data.length >= 5) {
+      lastData = data[data.length - 5] + data[data.length - 4];
     }
   })
 }

@@ -7,7 +7,7 @@ function updateBasicInfo(data) {
   var mhBasicInfo = 0.139;
   var mcBasicInfo = 0.653;
   var th2InitialBasicInfo = 31.07567262
-  tpdBasicInfo = tubesPressureDrop(data[2], data[3], mhBasicInfo);
+  tpdBasicInfo = tubesPressureDrop(data[2], data[3], data[4]); //mh = data[4]
   if(isNumber(tpdBasicInfo)) {
     document.getElementById("basicInfoTubesPressure").innerHTML = tpdBasicInfo.toFixed(4);
   }
@@ -17,9 +17,12 @@ function updateBasicInfo(data) {
   // tc2 = Temp agua quente de saida --- reposta sensor 4 = data 3
   // th1 = Temp agua quente de entrada --- reposta sensor 2 data 1
   // th2InitialBasicInfo =  Temp agua quente de saida especulada
-  fhwt = finalHotWaterTemperature(data[2], data[3], data[1], th2InitialBasicInfo, mhBasicInfo, mcBasicInfo);
+  // Descobrir sensor de fluxo da água fria
+  // Descobrir sensor de fluxo da água quente
 
-  hpdBasicInfo = hullPressureDrop(data[2], data[3], data[1], fhwt, mhBasicInfo);
+  fhwt = finalHotWaterTemperature(data[2], data[3], data[1], th2InitialBasicInfo, data[5], data[4]);
+
+  hpdBasicInfo = hullPressureDrop(data[2], data[3], data[1], fhwt, data[5]); //mg = data[5]
   document.getElementById("basicInfoHullPressure").innerHTML = hpdBasicInfo.toFixed(4);
 
   tpBasicInfo = thermalPerformance(data[2], data[3], data[1], fhwt);

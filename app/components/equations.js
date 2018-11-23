@@ -146,6 +146,7 @@ function tubesPressureDrop (tc1, tc2, mh) {
   console.log("atp = " + atp);
   console.log("Um = " + Um);
   console.log("Dpt = " + Dpt);
+  console.log("mh = "+ mh);
   return Dpt;
 }
 
