@@ -24,7 +24,7 @@ function updateBasicInfo(data) {
 
   cpc = calculateCPC (data[2], data[3]);
   cph = calculateCPH (data[1], th2InitialBasicInfo);
-  qc = heatTransferRate (mcBasicInfo, data[3], data[1], cpc);
+  qc = heatTransferRate (mcBasicInfo, data[3], data[2], cpc);
   th2 = calculateTh2 (data[1], qc, mhBasicInfo, cph);
   qh = coldTransferRate (mhBasicInfo, th2, data[1], cph)
   fhwt = finalHotWaterTemperature(data[2], data[3], data[1], th2InitialBasicInfo, mcBasicInfo, mhBasicInfo);
@@ -37,6 +37,7 @@ function updateBasicInfo(data) {
 
   document.getElementById("basicInfoHeatTransferRate").innerHTML = qc.toFixed(4);
   document.getElementById("basicInfoColdTransferRate").innerHTML = qh.toFixed(4);
+  console.log("TH2 em Tempo Real = "+th2);
   
 
 }
