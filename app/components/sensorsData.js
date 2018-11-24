@@ -107,8 +107,8 @@ async function getSensorsDatas() {
     }
 
     // Trying to get last 2 digits of data
-    if (data.length >= 5) {
-      lastData = data[data.length - 5] + data[data.length - 4];
+    if (data.length >= 3) {
+      lastData = data[data.length - 3] + data[data.length - 2];
     }
   })
 }

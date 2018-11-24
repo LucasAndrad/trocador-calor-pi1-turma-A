@@ -89,6 +89,19 @@ function readTableA9 (arithmeticMeanTh) {
   }
 }
 
+function calculateCPC (tc1, tc2) {
+  arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2)) / 2); //Temperatura média da agua fria
+  cpc = celsiusToKelvin(arithmeticMeanTc);
+  cpc = readTableTPSW(cpc);
+  return cpc;
+}
+
+function calculateCPH (th1, th2Initial) {
+  arithmeticMeanTh = ((parseFloat(th1) + parseFloat(th2Initial)) / 2); //Temperatura média da agua quente
+  cph = celsiusToKelvin(arithmeticMeanTh); //Temperatura em Kelvin
+  cph = readTableTPSW(cph);
+  return cph;
+}
 
 function heatTransferRate (mc, tc2, tc1, cpc) {
   qc = mc * cpc * (tc2 - tc1);
@@ -100,27 +113,30 @@ function coldTransferRate (mh, th2, th1, cph) {
   return qh;
 }
 
+function calculateTh2 (th1, qc, mh, cph){
+  temp = ((qc / (mh * cph)));
+  th2 = th1 - temp;
+  var roundedTh2 = parseFloat(th2.toFixed(4));
+  return roundedTh2;
+}
+
 
 function finalHotWaterTemperature (tc1, tc2, th1, th2Initial, mh, mc) {
   var cph, cpc;
 
-  arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2)) / 2); //Temperatura média da agua fria
-  arithmeticMeanTh = ((parseFloat(th1) + parseFloat(th2Initial)) / 2); //Temperatura média da agua quente
-  cpc = celsiusToKelvin(arithmeticMeanTc);
-  cpc = readTableTPSW(cpc);
-  cph = celsiusToKelvin(arithmeticMeanTh); //Temperatura em Kelvin
-  cph = readTableTPSW(cph);
+  cpc = calculateCPC(tc1, tc2);
+  cph = calculateCPH(th1, th2Initial);
 
   qc = heatTransferRate(mc, tc2, tc1, cpc);
   console.log("cph = " + cph);
   console.log("cpc = " + cpc);
-  temp = ((qc / (mh * cph)));
-  th2 = th1 - temp;
-  var roundedTh2 = parseFloat(th2.toFixed(4));
-  var qh = coldTransferRate(mh, th2, th1, cph);
+  roundedTh2 = calculateTh2 (th1, qc, mh,cph);
+  var qh = coldTransferRate(mh, roundedTh2, th1, cph);
   console.log("qh = " + qh);
   document.getElementById("initialTemperature").innerHTML = th1;
   document.getElementById("th2").innerHTML = roundedTh2;
+  document.getElementById("coldTransferRate").innerHTML = qc;
+  document.getElementById("heatTransferRate").innerHTML = qh;
   return roundedTh2;
 }
 

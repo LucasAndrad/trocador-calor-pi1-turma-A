@@ -6,8 +6,8 @@ function isNumber(n) {
 function updateBasicInfo(data) {
   var mhBasicInfo = 0.139;
   var mcBasicInfo = 0.653;
-  var th2InitialBasicInfo = 31.07567262
-  tpdBasicInfo = tubesPressureDrop(data[2], data[3], data[4]); //mh = data[4]
+  var th2InitialBasicInfo = 31.07567262;
+  tpdBasicInfo = tubesPressureDrop(data[2], data[3], mhBasicInfo); //mh = data[4]
   if(isNumber(tpdBasicInfo)) {
     document.getElementById("basicInfoTubesPressure").innerHTML = tpdBasicInfo.toFixed(4);
   }
@@ -17,14 +17,26 @@ function updateBasicInfo(data) {
   // tc2 = Temp agua quente de saida --- reposta sensor 4 = data 3
   // th1 = Temp agua quente de entrada --- reposta sensor 2 data 1
   // th2InitialBasicInfo =  Temp agua quente de saida especulada
+  // Uma coisa que não faz sentido: a temperatura da água quente não é conhecida, já que há um sensor
+  // para medi-la?
   // Descobrir sensor de fluxo da água fria
   // Descobrir sensor de fluxo da água quente
 
-  fhwt = finalHotWaterTemperature(data[2], data[3], data[1], th2InitialBasicInfo, data[5], data[4]);
+  cpc = calculateCPC (data[2], data[3]);
+  cph = calculateCPH (data[1], th2InitialBasicInfo);
+  qc = heatTransferRate (mcBasicInfo, data[3], data[1], cpc);
+  th2 = calculateTh2 (data[1], qc, mhBasicInfo, cph);
+  qh = coldTransferRate (mhBasicInfo, th2, data[1], cph)
+  fhwt = finalHotWaterTemperature(data[2], data[3], data[1], th2InitialBasicInfo, mcBasicInfo, mhBasicInfo);
 
-  hpdBasicInfo = hullPressureDrop(data[2], data[3], data[1], fhwt, data[5]); //mg = data[5]
+  hpdBasicInfo = hullPressureDrop(data[2], data[3], data[1], fhwt, mcBasicInfo); //mc = data[5]
   document.getElementById("basicInfoHullPressure").innerHTML = hpdBasicInfo.toFixed(4);
 
   tpBasicInfo = thermalPerformance(data[2], data[3], data[1], fhwt);
   document.getElementById("basicInfoThermalPerformance").innerHTML = tpBasicInfo.toFixed(4);
+
+  document.getElementById("basicInfoHeatTransferRate").innerHTML = qc.toFixed(4);
+  document.getElementById("basicInfoColdTransferRate").innerHTML = qh.toFixed(4);
+  
+
 }
