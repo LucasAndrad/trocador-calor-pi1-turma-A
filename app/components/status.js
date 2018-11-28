@@ -1,5 +1,5 @@
 function checkStatus(temperatureSensor4) {
-  var max_temp = 60;
+  var max_temp = 80;
   if(temperatureSensor4 <= max_temp) {
     document.getElementById("sta").style.background ="#01DF01";
     document.getElementById("sta").style.animationName="null";

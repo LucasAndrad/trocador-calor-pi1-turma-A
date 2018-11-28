@@ -6,7 +6,7 @@ const {
 var SerialPort = require('serialport');
 var Readline = SerialPort.parsers.Readline
 // '/dev/ttyACM0' is the port for arduino
-var path = '/tmp/ttyV0' // '/tmp/ttyV0' for data simulation
+var path = '/dev/ttyACM0' // '/tmp/ttyV0' for data simulation
 var port = new SerialPort(path, {
   autoOpen: false,
   baudRate: 9600
@@ -95,12 +95,12 @@ async function getSensorsDatas() {
         document.getElementById("s-temperature4").innerHTML = data;
         nextSensorData[3] = parsed_data
       } else if (lastData =="mc"){ //sensor de fluxo frio
-        checkStatus(data);
-        document.getElementById("s-flowMc").innerHTML = data;
+        data = convertLminToKgs(data)
+        document.getElementById("s-flowMc").innerHTML = data.toFixed(3);
         nextSensorData[4] = parsed_data
       } else if (lastData == "mh"){ //sensor de fluxo quente
-        checkStatus(data);
-        document.getElementById("s-flowMh").innerHTML = data;
+        data = convertLminToKgs(data)
+        document.getElementById("s-flowMh").innerHTML = data.toFixed(3);
         nextSensorData[5] = parsed_data
       }
 

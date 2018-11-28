@@ -32,8 +32,8 @@ function updateBasicInfo(data) {
   hpdBasicInfo = hullPressureDrop(data[2], data[3], data[1], fhwt, mcBasicInfo); //mc = data[5]
   document.getElementById("basicInfoHullPressure").innerHTML = hpdBasicInfo.toFixed(4);
 
-  tpBasicInfo = thermalPerformance(data[2], data[3], data[1], fhwt, mhBasicInfo);
-  document.getElementById("basicInfoThermalPerformance").innerHTML = tpBasicInfo.toFixed(4);
+  // tpBasicInfo = thermalPerformance(data[2], data[3], data[1], fhwt, mhBasicInfo);
+  // document.getElementById("basicInfoThermalPerformance").innerHTML = tpBasicInfo.toFixed(4);
 
   document.getElementById("basicInfoHeatTransferRate").innerHTML = qc.toFixed(4);
   document.getElementById("basicInfoColdTransferRate").innerHTML = qh.toFixed(4);
