@@ -244,7 +244,7 @@ function hullPressureDrop (tc1, tc2, th1, th2, mh) {
 function thermalPerformance (tc1, tc2, th1, th2, mh) {
   var q, Uf, a, Dtml;
   Uc = 2719.421;
-  Uf = 1839.164;
+  Ufadm = 1839.164;
   a = 0.786174;
   var f; //= 0.00560
   Dtml = 0;
@@ -258,6 +258,8 @@ function thermalPerformance (tc1, tc2, th1, th2, mh) {
   var kcf = 0.649;
   var Rfi = 0.000088;
   var Rfo = 0.000088;
+  var d0 = 0.00965;
+  var km = 367.5;
 
   arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2)) / 2); //Temperatura média da agua fria
   auxMi = readTableA9(arithmeticMeanTc);
@@ -287,11 +289,16 @@ function thermalPerformance (tc1, tc2, th1, th2, mh) {
 
   Uc = 1/((d0/di*hi) + (d0*Math.log(d0/di))/(2*km) + (1/ho));
   Uf = 1/Uc + Rfi + Rfo
-
-  Erro = Math.abs(Uf-Ufadm/Ufadm);
-
+  console.log("uf = "+Uf);
+  console.log("Ufadm = "+Ufadm);
+  Erro = Math.abs((Uf/1000)-(Ufadm/1000)/(Ufadm/1000));
+  Erro = Erro*100;
   Dtml = ((th1 - tc2) - (th2 - tc1)) / Math.log((th1 - tc2) / (th2 - tc1));
   q = Uf * a * Dtml;
+  console.log("q = "+q);
+  console.log("Dtml = "+Dtml);
+  console.log("Erro = "+Erro);
+  document.getElementById("thermalPerformanceError").innerHTML = Erro.toFixed(4);
   if (typeof q === "number") {
     return q;
   }
