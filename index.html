@@ -22,6 +22,9 @@
     <script src="./app/components/startApp.js" defer></script>
     <script src="./app/components/status.js" defer></script>
     <script src="./app/components/chart.js" defer></script>
+    <script src="./app/components/pressaoTuboChart.js" defer></script>
+    <script src="./app/components/pressaoCascoChart.js" defer></script>
+    <script src="./app/components/eficienciaChart.js" defer></script>
     <script src="./app/components/basicInfo.js" defer></script>
 
   </head>
@@ -152,6 +155,19 @@
     </div>
       <div class="tab3-content" id="tab3">
          <h1>Gráficos</h1>
+         <div class="container1">
+           <div class="pressao-container">
+             <canvas id="pressaoTubo" width="400" height="400"></canvas>
+           </div>
+           <div class="pressao-container">
+             <canvas id="pressaoCasco" width="400" height="400"></canvas>
+           </div>
+         </div>
+         <div class="container1">
+           <div class="eficiencia-container">
+             <canvas id="eficiencia" width="400" height="400"></canvas>
+           </div>
+         </div>
       </div>
   </body>
 </html>
