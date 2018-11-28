@@ -47,7 +47,6 @@ function readTableB2 (tw) {
   var posterior;
   var temperaturePrevious;
   var temperaturePosterior;
-
   for (i = 0; i < tableB2.length; i++) {
     if (tw == tableB2[i].temperature) {
       uw = tableB2[i].mi;
@@ -135,8 +134,8 @@ function finalHotWaterTemperature (tc1, tc2, th1, th2Initial, mh, mc) {
   console.log("qh = " + qh);
   document.getElementById("initialTemperature").innerHTML = th1;
   document.getElementById("th2").innerHTML = roundedTh2;
-  document.getElementById("coldTransferRate").innerHTML = qc;
-  document.getElementById("heatTransferRate").innerHTML = qh;
+  document.getElementById("coldTransferRate").innerHTML = qc.toFixed(4);
+  document.getElementById("heatTransferRate").innerHTML = qh.toFixed(4);
   return roundedTh2;
 }
 
@@ -242,13 +241,53 @@ function hullPressureDrop (tc1, tc2, th1, th2, mh) {
   return Dps;
 }
 
-function thermalPerformance (tc1, tc2, th1, th2) {
-  var q, uf, a, Dtml;
-  uf = 2266.1767;
+function thermalPerformance (tc1, tc2, th1, th2, mh) {
+  var q, Uf, a, Dtml;
+  Uf = 1839.164;
   a = 0.786174;
+  var f; //= 0.00560
   Dtml = 0;
+  var Nt = 27; // Número de tubos
+  var Np = 1;
+  var di = 0.00757; // Diâmetro interno 
+  var Pr = 2.072539;
+  var Ret = 37.419; //Não tem no memorial
+  var k = 0.659; //Não tem no memorial
+  var De = 0.036056; 
+  var As = 0.00959245074546287;
+  var kcf = 720*Math.pow(10,(-6));
+  var Rfi = 0.000088;
+  var Rfo = 0.000088;
+
+  arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2)) / 2); //Temperatura média da agua fria
+  mi = readTableA9(arithmeticMeanTc);
+  Re = ((4 * mh) / ((Nt / Np) * Math.PI * mi * di)) * 1000;
+  f = Math.pow((1.58 * Math.log(Re) - 3.28), (-2));
+  console.log("f thermalPerformance = " + f);
+  Nu = ((f/2)*Ret*Pr)/(1.07 + 12.7*Math.pow((f/2),1/2)*(Math.pow(Pr,2/3)-1));
+  hi = (k*Nu)/di;
+
+  twCelsius = 0.5 * (parseFloat((parseFloat(tc1) + parseFloat(tc2)) / 2) + parseFloat((parseFloat(th1) + parseFloat(th2)) / 2));
+  tw = celsiusToKelvin(twCelsius);
+  auxMiw = readTableB2(tw);
+  miw = auxMiw * Math.pow(10, (-1));
+
+  arithmeticMeanTh = ((parseFloat(th1) + parseFloat(th2)) / 2); //Temperatura média da agua quente
+  mic = readTableA9(arithmeticMeanTh); 
+  cpc = calculateCPC(tc1, tc2);
+
+  Gs = mh / As;
+  console.log("Gs = "+Gs);
+  ho = (0.36*Math.pow((De*Gs/mic),0.55) * Math.pow((cpc*mi/kcf),1/3) * Math.pow((mic/miw),0.14) * k)/De;
+  console.log("ho = "+ho);
+
+  Uc = 1/((d0/di*hi) + (d0*Math.log(d0/di))/(2*km) + (1/ho));
+  Uf = 1/Uc + Rfi + Rfo
+
+  Erro = Math.abs(Uf-Ufadm/Ufadm);
+
   Dtml = ((th1 - tc2) - (th2 - tc1)) / Math.log((th1 - tc2) / (th2 - tc1));
-  q = uf * a * Dtml;
+  q = Uf * a * Dtml;
   if (typeof q === "number") {
     return q;
   }
@@ -271,13 +310,11 @@ function calculateValuesOfSimulation () {
   console.log("mc = "+ mc);
   console.log("mh = "+ mh);
 
-
-
   fhwt = finalHotWaterTemperature(tc1, tc2, th1, th2Initial, mh, mc);
   tpd = tubesPressureDrop(tc1, tc2, mh);
   hpd = hullPressureDrop(tc1, tc2, th1, th2Initial, mh);
-  document.getElementById("tubePressure").innerHTML = tpd.toFixed(6);
-  document.getElementById("hullPressure").innerHTML = hpd.toFixed(6);
-  tp = thermalPerformance(tc1, tc2, th1, th2Initial);
-  document.getElementById("thermalPerformance").innerHTML = tp.toFixed(6);
+  document.getElementById("tubePressure").innerHTML = tpd.toFixed(4);
+  document.getElementById("hullPressure").innerHTML = hpd.toFixed(4);
+  tp = thermalPerformance(tc1, tc2, th1, th2Initial,mh);
+  document.getElementById("thermalPerformance").innerHTML = tp.toFixed(4);
 }
