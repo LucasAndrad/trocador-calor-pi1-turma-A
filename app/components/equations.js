@@ -216,7 +216,7 @@ function hullPressureDrop (tc1, tc2, th1, th2, mh) {
   console.log("ub = " + ub);
 
   arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2)) / 2); //Temperatura média da agua fria
-  mi = readTableA9(arithmeticMeanTc);
+  mi = readTableA9(arithmeticMeanTc); 
   console.log("mi = " + mi);
   Re = ((4 * mh) / ((Nt / Np) * Math.PI * mi * di)) * 1000;
   console.log("Re = " + Re);
@@ -243,29 +243,34 @@ function hullPressureDrop (tc1, tc2, th1, th2, mh) {
 
 function thermalPerformance (tc1, tc2, th1, th2, mh) {
   var q, Uf, a, Dtml;
+  Uc = 2719.421;
   Uf = 1839.164;
   a = 0.786174;
   var f; //= 0.00560
   Dtml = 0;
-  var Nt = 27; // Número de tubos
+  var Nt = 26.46157163; // Número de tubos
   var Np = 1;
-  var di = 0.00757; // Diâmetro interno 
+  var di = 0.00755; // Diâmetro interno 
   var Pr = 2.072539;
-  var Ret = 37.419; //Não tem no memorial
-  var k = 0.659; //Não tem no memorial
+  var k = 0.649; //Não tem no memorial
   var De = 0.036056; 
   var As = 0.00959245074546287;
-  var kcf = 720*Math.pow(10,(-6));
+  var kcf = 0.649;
   var Rfi = 0.000088;
   var Rfo = 0.000088;
 
   arithmeticMeanTc = ((parseFloat(tc1) + parseFloat(tc2)) / 2); //Temperatura média da agua fria
-  mi = readTableA9(arithmeticMeanTc);
-  Re = ((4 * mh) / ((Nt / Np) * Math.PI * mi * di)) * 1000;
+  auxMi = readTableA9(arithmeticMeanTc);
+  mi = auxMi*Math.pow(10,-3);
+  console.log("mi interpolado thermal = ", +mi)
+  Re = ((4 * mh) / ((Nt / Np) * Math.PI * mi * di));
+  console.log("Re = ", Re);
   f = Math.pow((1.58 * Math.log(Re) - 3.28), (-2));
   console.log("f thermalPerformance = " + f);
-  Nu = ((f/2)*Ret*Pr)/(1.07 + 12.7*Math.pow((f/2),1/2)*(Math.pow(Pr,2/3)-1));
+  Nu = ((f/2)*Re*Pr)/(1.07 + (12.7*Math.pow((f/2),0.5)*(Math.pow(Pr,2/3)-1)));
+  console.log("Nu = "+Nu);
   hi = (k*Nu)/di;
+  console.log("hi = "+hi)
 
   twCelsius = 0.5 * (parseFloat((parseFloat(tc1) + parseFloat(tc2)) / 2) + parseFloat((parseFloat(th1) + parseFloat(th2)) / 2));
   tw = celsiusToKelvin(twCelsius);
@@ -275,10 +280,9 @@ function thermalPerformance (tc1, tc2, th1, th2, mh) {
   arithmeticMeanTh = ((parseFloat(th1) + parseFloat(th2)) / 2); //Temperatura média da agua quente
   mic = readTableA9(arithmeticMeanTh); 
   cpc = calculateCPC(tc1, tc2);
-
   Gs = mh / As;
   console.log("Gs = "+Gs);
-  ho = (0.36*Math.pow((De*Gs/mic),0.55) * Math.pow((cpc*mi/kcf),1/3) * Math.pow((mic/miw),0.14) * k)/De;
+  ho = (0.36*Math.pow((De*Gs/mic),0.55) * Math.pow((cpc*mic/kcf),1/3) * Math.pow((mic/miw),0.14) * k)/De;
   console.log("ho = "+ho);
 
   Uc = 1/((d0/di*hi) + (d0*Math.log(d0/di))/(2*km) + (1/ho));
