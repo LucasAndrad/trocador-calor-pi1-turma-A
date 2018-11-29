@@ -299,12 +299,13 @@ function thermalPerformance (tc1, tc2, th1, th2, mh) {
   console.log("Dtml = "+Dtml);
   console.log("Erro = "+Erro);
   document.getElementById("thermalPerformanceError").innerHTML = Erro.toFixed(4);
-  if (typeof q === "number") {
-    return q;
-  }
-  else {
-    return 0;
-  }
+  // if (typeof q === "number") {
+  //   return q;
+  // }
+  // else {
+  //   return 0;
+  // }
+  return q;
 }
 
 function calculateValuesOfSimulation () {
