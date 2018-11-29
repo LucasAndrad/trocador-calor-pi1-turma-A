@@ -326,6 +326,6 @@ function calculateValuesOfSimulation () {
   hpd = hullPressureDrop(tc1, tc2, th1, th2Initial, mh);
   document.getElementById("tubePressure").innerHTML = tpd.toFixed(4);
   document.getElementById("hullPressure").innerHTML = hpd.toFixed(4);
-  tp = thermalPerformance(tc1, tc2, th1, th2Initial,mh);
+  tp = thermalPerformance(tc1, tc2, th1, fhwt,mh);
   document.getElementById("thermalPerformance").innerHTML = tp.toFixed(4);
 }
