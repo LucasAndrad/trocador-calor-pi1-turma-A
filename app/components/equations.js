@@ -293,7 +293,7 @@ function thermalPerformance (tc1, tc2, th1, th2, mh) {
   // console.log("Ufadm = "+Ufadm);
   Erro = Math.abs((Uf/1000)-(Ufadm/1000)/(Ufadm/1000));
   Erro = Erro*100;
-  Dtml = ((th1 - tc2) - (th2 - tc1)) / Math.log((th1 - tc2) / (th2 - tc1));
+  Dtml = ((th1 - tc2) - (th2 - tc1)) / Math.log(Math.abs(th1 - tc2) / Math.abs(th2 - tc1));
   q = Uf * a * Dtml;
   // console.log("q = "+q);
   // console.log("Dtml = "+Dtml);
