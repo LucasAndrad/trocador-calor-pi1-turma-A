@@ -14,7 +14,7 @@ function updateBasicInfo(data) {
 
   // Legenda muito importante
   // tc1 = Temp agua fria de entrada --- reposta sensor 3 = data 2
-  // tc2 = Temp agua quente de saida --- reposta sensor 4 = data 3
+  // tc2 = Temp agua fria de saida --- reposta sensor 4 = data 3
   // th1 = Temp agua quente de entrada --- reposta sensor 2 data 1
   // th2InitialBasicInfo =  Temp agua quente de saida especulada
   // Uma coisa que não faz sentido: a temperatura da água quente não é conhecida, já que há um sensor
@@ -31,9 +31,17 @@ function updateBasicInfo(data) {
 
   hpdBasicInfo = hullPressureDrop(data[2], data[3], data[1], fhwt, mcBasicInfo); //mc = data[5]
   document.getElementById("basicInfoHullPressure").innerHTML = hpdBasicInfo.toFixed(4);
-
-  tpBasicInfo = thermalPerformance(data[2], data[3], data[1], fhwt, mhBasicInfo);
-  document.getElementById("basicInfoThermalPerformance").innerHTML = tpBasicInfo.toFixed(4);
+  
+    // 1 = D7 = data[0]
+    // 2 = F5 = data[1]
+    // 3 = C3 = data[2]
+    // 4 = 9C = data[3]
+  // thermalPerformance(tc1, tc2, th1, fhwt,mh);
+  tpBasicInfo = thermalPerformance(data[1], data[2], data[0], data[3], mhBasicInfo);
+  console.log(tpBasicInfo);
+  if(isNumber(tpBasicInfo)) {
+    document.getElementById("basicInfoThermalPerformance").innerHTML = tpBasicInfo.toFixed(4);
+  }
 
   document.getElementById("basicInfoHeatTransferRate").innerHTML = qc.toFixed(4);
   document.getElementById("basicInfoColdTransferRate").innerHTML = qh.toFixed(4);
