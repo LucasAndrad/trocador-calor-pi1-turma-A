@@ -6,7 +6,7 @@ const {
 var SerialPort = require('serialport');
 var Readline = SerialPort.parsers.Readline
 // '/dev/ttyACM0' is the port for arduino
-var path = '/tmp/ttyV0' // '/tmp/ttyV0' for data simulation
+var path = '/dev/ttyACM0'; // '/tmp/ttyV0' for data simulation
 var port = new SerialPort(path, {
   autoOpen: false,
   baudRate: 9600
@@ -21,7 +21,7 @@ function startButtonHolder() {
   return 0;
 }
 
-var nextSensorData = [0, 0, 0, 0]
+var nextSensorData = [0, 0, 0, 0, 0, 0]
 
 async function getSensorsDatas() {
   port.open(function (err) {
@@ -77,7 +77,10 @@ async function getSensorsDatas() {
   parser.on('data', function (data) {
     var parsed_data = parseFloat(data);
 
-    // If data is numeric
+    // 1 = D7 = data[0]
+    // 2 = F5 = data[1]
+    // 3 = C3 = data[2]
+    // 4 = 9C = data[3]
     if (typeof data != typeof NaN && data.length < 8) {
       if (lastData == "D7") {
         document.getElementById("s-temperature1").innerHTML = data;
@@ -94,7 +97,16 @@ async function getSensorsDatas() {
         checkStatus(data);
         document.getElementById("s-temperature4").innerHTML = data;
         nextSensorData[3] = parsed_data
+      } else if (lastData =="mc"){ //sensor de fluxo frio
+        data = convertLminToKgs(data)
+        document.getElementById("s-flowMc").innerHTML = data.toFixed(3);
+        nextSensorData[4] = parsed_data
+      } else if (lastData == "mh"){ //sensor de fluxo quente
+        data = convertLminToKgs(data)
+        document.getElementById("s-flowMh").innerHTML = data.toFixed(3);
+        nextSensorData[5] = parsed_data
       }
+
     }
 
     // Trying to get last 2 digits of data

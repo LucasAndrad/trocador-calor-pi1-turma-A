@@ -48,13 +48,19 @@
 
           <div class="calc-result">
             <div class="calc-result-element a" id="">
-              Queda de pressão nos tubos: <span id="basicInfoTubesPressure"> 0.0 </span>
+              Queda de pressão nos tubos: <span id="basicInfoTubesPressure"> 0.0 </span> Pa
             </div>
             <div class="calc-result-element b">
-              Queda de pressão no casco: <span id="basicInfoHullPressure"> 0.0 </span>
+              Queda de pressão no casco: <span id="basicInfoHullPressure"> 0.0 </span> Pa
             </div>
             <div class="calc-result-element c">
               Desempenho térmico: <span id="basicInfoThermalPerformance"> 0.0 </span> J
+            </div>
+            <div class="calc-result-element d">
+              Taxa Transferência de Calor da Água Quente: <span id="basicInfoHeatTransferRate"> 0.0 </span> kW
+            </div>
+            <div class="calc-result-element e">
+              Taxa Transferência de Calor da Água Fria: <span id="basicInfoColdTransferRate"> 0.0 </span> kW
             </div>
           </div>
 
@@ -93,6 +99,14 @@
                 <span class="sensor-dot"><text>4</text></span>
               </div>
             </div>
+            <div class="flowMc-sensor-element">
+              <span class="temperature-dot"><text id="s-flowMc"></text></span>
+              <span class="sensor-dot"><text>mc</text></span>
+            </div>
+            <div class="flowMh-sensor-element">
+              <span class="temperature-dot"><text id="s-flowMh"></text></span>
+              <span class="sensor-dot"><text>mh</text></span>
+            </div>
           </div>
         </div>
 
@@ -128,24 +142,26 @@
       <div>
         <div class="card2" id="valuesOfSimulation">
           <h1 align="center">Resultados da Simulação</h1><br>
-          <img id="blueThermometer"src="./app/images/icons8-termômetro-frio.png"/><p style="text-align:center; position: absolute; left: 37%;">Temperatura final da água quente:
+          <img id="blueThermometer"src="./app/images/icons8-termômetro-frio.png"/><p style="text-align:center; position: absolute; left: 30%;">Temperatura final da água quente:
           <b><span id="th2">  </b></span> °C </p><br><br>
           <p></p>
-          <br><br>
-          <img id="redThermometer" src="./app/images/icons8-termômetro-quente.png"/><p style="text-align:center; position: absolute; left: 37%;">Temperatura inicial da água quente:
+          <img id="redThermometer" src="./app/images/icons8-termômetro-quente.png"/><p style="text-align:center; position: absolute; left: 30%;">Temperatura inicial da água quente:
           <b><span id="initialTemperature"> </b> </span> °C </p><br><br>
           <p></p>
-          <br><br>
-          <img id="iconTubePressure" src="./app/images/icons8-pressão-50.png"/><p style="text-align:center; position: absolute; left: 37%;">Queda de pressão nos tubos:
+          <img id="iconTubePressure" src="./app/images/icons8-pressão-50.png"/><p style="text-align:center; position: absolute; left: 30%;">Queda de pressão nos tubos:
           <b><span id="tubePressure"> </b> </span> Pa </p><br><br>
           <p></p>
-          <br><br>
-          <img id="iconHullPressure" src="./app/images/icons8-pressão-50.png"/><p style="text-align:center; position: absolute; left: 37%;">Queda de pressão no casco:
+          <img id="iconHullPressure" src="./app/images/icons8-pressão-50.png"/><p style="text-align:center; position: absolute; left: 30%;">Queda de pressão no casco:
           <b><span id="hullPressure"> </b></span> Pa </p><br><br>
           <p></p>
-          <br><br>
-          <img id="iconThermalPerformance" src="./app/images/icons8-umidade-50.png"/><p style="text-align:center; position: absolute; left: 37%;">Desempenho térmico:
-          <b><span id="thermalPerformance"> </b></span> J </p><br><br>
+          <img id="iconThermalPerformance" src="./app/images/icons8-umidade-50.png"/><p style="text-align:center; position: absolute; left: 30%;">Desempenho térmico:
+          <b><span id="thermalPerformance"> </b></span> J <b><br>Erro: </b><span id="thermalPerformanceError"></span>%</p><br><br>
+          <p></p>
+          <img id="redThermometer" src="./app/images/icons8-termômetro-quente.png"/><p style="text-align:center; position: absolute; left: 30%;">Taxa Transferência de Calor da Água Quente:
+          <b><span id="heatTransferRate"> </b></span> kW </p><br><br>
+          <p></p>
+          <img id="blueThermometer" src="./app/images/icons8-termômetro-frio.png"/><p style="text-align:center; position: absolute; left: 30%;">Taxa Transferência de Calor da Água Fria:
+          <b><span id="coldTransferRate"> </b></span> kW </p><br><br>
           <p></p>
         </div>
       </div>
